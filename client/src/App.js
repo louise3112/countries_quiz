@@ -43,8 +43,7 @@ function App() {
 
     return (
         <div className="App">
-            <PopGameBox countries={popCountries}/>
-            {/* <Router>
+            <Router>
                 <header>
                     <NavBar />
                 </header>
@@ -53,10 +52,10 @@ function App() {
                     <Route path="/CountriesFacts" element={<Countries />} />
                     <Route path="/FlagQuiz" element={<FlagsQuiz />} />
                     <Route path="/CountriesQuiz" element={<CountriesQuiz />} />
-                    <Route path="/PopulationQuiz" element={<PopulationQuiz />} />
+                    <Route path="/PopulationQuiz" element={<PopulationQuiz countries={countriesData}/>} />
                     <Route path="/LocationQuiz" element={<LocationQuiz />} />
                 </Routes>
-            </Router> */}
+            </Router>
         </div>
     )
 }
