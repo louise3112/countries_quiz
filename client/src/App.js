@@ -8,8 +8,6 @@ import LocationQuiz from './containers/LocationContainer/Location';
 import PopulationQuiz from './containers/PopulationContainer/Populations';
 import CountriesQuiz from './containers/QuizContainer/Quiz';
 
-import './App.css
-
 function App() {
 
     const [countriesData, setCountriesData] = useState([])
@@ -27,20 +25,20 @@ function App() {
     }, [])
 
     return (
-         <div className="App">
-                <Router>
-                    <header>
-                        <NavBar />
-                    </header>
-                    <Routes>
-                        <Route path="/" element={<Games />} />
-                        <Route path="/CountriesFacts" element={<Countries />} />
-                        <Route path="/FlagQuiz" element={<FlagsQuiz />} />
-                        <Route path="/CountriesQuiz" element={<CountriesQuiz />} />
-                        <Route path="/PopulationQuiz" element={<PopulationQuiz />} />
-                        <Route path="/LocationQuiz" element={<LocationQuiz />} />
-                   </Routes>
-             </Router>
+        <div className="App">
+            <Router>
+                <header>
+                    <NavBar />
+                </header>
+                <Routes>
+                    <Route path="/" element={<Games />} />
+                    <Route path="/CountriesFacts" element={<Countries />} />
+                    <Route path="/FlagQuiz" element={<FlagsQuiz />} />
+                    <Route path="/CountriesQuiz" element={<CountriesQuiz />} />
+                    <Route path="/PopulationQuiz" element={<PopulationQuiz />} />
+                    <Route path="/LocationQuiz" element={<LocationQuiz />} />
+                </Routes>
+            </Router>
         </div>
     )
 }
