@@ -8,28 +8,26 @@ import LocationQuiz from './containers/LocationContainer/Location';
 import PopulationQuiz from './containers/PopulationContainer/Populations';
 import CountriesQuiz from './containers/QuizContainer/Quiz';
 
+import './App.css
 
 function App() {
 
     const [countriesData, setCountriesData] = useState([])
 
-const getCountriesData = () => {
-    return fetch("https://restcountries.com/v3.1/all")
-        .then(res => res.json())
-}
+    const getCountriesData = () => {
+        return fetch("https://restcountries.com/v3.1/all")
+            .then(res => res.json())
+    }
 
-useEffect(() => {
-    getCountriesData()
-        .then(allCountries => {
-            setCountriesData(allCountries)
-        })
-}, [])
+    useEffect(() => {
+        getCountriesData()
+            .then(allCountries => {
+                setCountriesData(allCountries)
+            })
+    }, [])
 
-
-
-
-        return (
-            <div className="App">
+    return (
+         <div className="App">
                 <Router>
                     <header>
                         <NavBar />
@@ -41,10 +39,10 @@ useEffect(() => {
                         <Route path="/CountriesQuiz" element={<CountriesQuiz />} />
                         <Route path="/PopulationQuiz" element={<PopulationQuiz />} />
                         <Route path="/LocationQuiz" element={<LocationQuiz />} />
-                    </Routes>
-                </Router>
-            </div>
-        )
-    }
+                   </Routes>
+             </Router>
+        </div>
+    )
+}
 
 export default App
