@@ -8,6 +8,7 @@ import LocationQuiz from './containers/LocationContainer/Location';
 import PopulationQuiz from './containers/PopulationContainer/Populations';
 import CountriesQuiz from './containers/QuizContainer/Quiz';
 
+
 function App() {
 
     const [countriesData, setCountriesData] = useState([])
@@ -35,7 +36,7 @@ function App() {
                     <Route path="/CountriesFacts" element={<Countries />} />
                     <Route path="/FlagQuiz" element={<FlagsQuiz />} />
                     <Route path="/CountriesQuiz" element={<CountriesQuiz />} />
-                    <Route path="/PopulationQuiz" element={<PopulationQuiz />} />
+                    <Route path="/PopulationQuiz" element={<PopulationQuiz countries={countriesData}/>} />
                     <Route path="/LocationQuiz" element={<LocationQuiz />} />
                 </Routes>
             </Router>
