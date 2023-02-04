@@ -1,5 +1,14 @@
-import './App.css'
 import {useState, useEffect} from 'react'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavBar from './containers/NavBar';
+import Games from './containers/GamesContainer/Games';
+import Countries from './containers/CountriesContainer/Countries';
+import FlagsQuiz from './containers/FlagContainer/FlagQuiz';
+import LocationQuiz from './containers/LocationContainer/Location';
+import PopulationQuiz from './containers/PopulationContainer/Populations';
+import CountriesQuiz from './containers/QuizContainer/Quiz';
+
+import './App.css
 
 function App() {
 
@@ -17,9 +26,21 @@ function App() {
             })
     }, [])
 
-
     return (
-        <div className="App">
+         <div className="App">
+                <Router>
+                    <header>
+                        <NavBar />
+                    </header>
+                    <Routes>
+                        <Route path="/" element={<Games />} />
+                        <Route path="/CountriesFacts" element={<Countries />} />
+                        <Route path="/FlagQuiz" element={<FlagsQuiz />} />
+                        <Route path="/CountriesQuiz" element={<CountriesQuiz />} />
+                        <Route path="/PopulationQuiz" element={<PopulationQuiz />} />
+                        <Route path="/LocationQuiz" element={<LocationQuiz />} />
+                   </Routes>
+             </Router>
         </div>
     )
 }
