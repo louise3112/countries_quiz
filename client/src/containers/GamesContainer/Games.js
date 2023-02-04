@@ -10,6 +10,8 @@ const Games = () => {
     justify-content: space-between;
     position: relative;
     top: 5rem;
+    margin-left: 10px;
+    margin-right: 10px;
 `;
 
     const GamesItems = styled.li`
@@ -18,16 +20,18 @@ const Games = () => {
     color: #BECE3A;
     }
     margin-top: 20px;
+    list-style: none;
 `
     const Images = styled.img`
     height: 100px;
     `
 const Box = styled.div`
     width: 30%;
-    margin-bottom: 20px;
+    margin-bottom: 6px;
     border: 1px solid #ccc;
     text-align: center;
     padding: 20px;
+    background-color: #96bcb4;
 `;
 
 
@@ -38,7 +42,7 @@ const Box = styled.div`
         <GamesGrid className="Games-list">
             <Box>
             <Images className='Globe' src={Globe} alt='Globe'/> 
-            <GamesItems>Countries Facts</GamesItems>
+            <GamesItems >Countries Facts</GamesItems>
             </Box>
             <Box>
             <Images className='Globe' src={Globe} alt='Globe'/>
