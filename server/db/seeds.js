@@ -6,8 +6,8 @@ const getCountries = async function () {
         .then(res => res.json())
         .then(res => {
             return res.map(country => ({
-                name: country.name.official,
-                flag: country.flags.png,
+                name: country.name.common,
+                flag: country.flags.svg,
                 population: country.population,
                 language: country.languages,
                 capital: country.capital ? country.capital[0]: null

@@ -7,6 +7,7 @@ const FlagPic = styled.img`
 const PopGameItem = ({country, processAnswer}) => {
 
     const handleClick = (evt) => {
+        console.log("Clicked " + evt.target.value)
         processAnswer(country, evt.target.value)
     }
 
@@ -16,7 +17,7 @@ const PopGameItem = ({country, processAnswer}) => {
             <div className="country-card">
                 <h4>{country.name}</h4>
                 <FlagPic src={country.flag} alt={"Flag for " + country.name} height={"100em"} width={"150em"}/>
-                <p><b>Population:</b> {country.status === "current" ? "????" : country.population}</p>
+                <p><b>Population:</b> {country.status === "current" ? "????" : country.population.toLocaleString()}</p>
             </div>
             {country.status === "current" && <button onClick={handleClick} value="lower">LOWER</button>}
         </div>

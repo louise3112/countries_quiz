@@ -12,13 +12,13 @@ const MysteryCard = styled.p`
     font-weight: bolder;
 `
 
-const PopGameList = ({countries}) => {
+const PopGameList = ({countries, processAnswer}) => {
 
     const listOfPopGameItems = countries.map(country => {
         if (country.status === "none") {
-            return <MysteryCard>?</ MysteryCard>
+            return <MysteryCard key={country._id}>?</ MysteryCard>
         } else {
-            return <PopGameItem key={country._id} country={country}/>
+            return <PopGameItem key={country._id} country={country} processAnswer={processAnswer}/>
         }
     })
 
