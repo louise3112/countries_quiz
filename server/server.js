@@ -1,5 +1,6 @@
-import { getCountriesCollection } from './db_connection.js'
-const express = require('express')
+import { getCountriesCollection } from './db/db_connection.js'
+import { Express } from 'express'
+// const express = require('express')
 const app = express()
 
 
