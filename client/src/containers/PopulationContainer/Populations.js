@@ -1,6 +1,7 @@
-import PopGameItem from "../../components/PopGameItem"
 import { randomCountries } from "../../helpers/usefulFunctions"
-import { getAllCountries } from "../../helpers/countryDataFetches"
+
+import PopGameItem from "../../components/PopGameItem"
+
 import styled from "styled-components"
 
 const ListOfCountryCards = styled.ul`
@@ -9,22 +10,9 @@ const ListOfCountryCards = styled.ul`
     justify-content: space-evenly;
 `
 
-const PopulationQuiz = () => {
+const PopulationQuiz = ({countries}) => {
 
-    // const randomSelection = (array) => {
-    //     const selected = []
-    //     const remaining = [...array]
-
-    //     for (let i = 0; i < 6; i++) {
-    //         let index = Math.floor(Math.random() * remaining.length)
-    //         selected.push(remaining[index])
-    //         remaining.splice(index, 1)
-    //     }
-        
-    //     return selected
-    // }
-
-    const listOfPopGameItems = randomCountries(getAllCountries(), 6).map(country => {
+    const listOfPopGameItems = randomCountries(countries, 6).map(country => {
         return <PopGameItem country={country} key={country.name.common}/>
     })
 
