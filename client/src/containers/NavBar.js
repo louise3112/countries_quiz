@@ -22,7 +22,7 @@ font-size: 1.3rem;
 text-decoration: none;
 color: white; 
 &:hover {
-color: #e7e759;
+color: gold;
 }
 `
 
