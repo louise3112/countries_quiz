@@ -4,10 +4,15 @@ const FlagPic = styled.img`
     border: solid grey 1px;
 `
 
+const Answer = styled.p`
+    font-size: 48px;
+    font-weight: bolder;
+    margin: 0;
+`
+
 const PopGameItem = ({country, processAnswer}) => {
 
     const handleClick = (evt) => {
-        console.log("Clicked " + evt.target.value)
         processAnswer(country, evt.target.value)
     }
 
@@ -20,9 +25,10 @@ const PopGameItem = ({country, processAnswer}) => {
                 <p><b>Population:</b> {country.status === "current" ? "????" : country.population.toLocaleString()}</p>
             </div>
             {country.status === "current" && <button onClick={handleClick} value="lower">LOWER</button>}
+            {country.guessCorrect && <Answer>&#9989;</Answer>}
+            {country.guessCorrect === false && <Answer>&#10060;</Answer>}
         </div>
     )
-
 }
 
 export default PopGameItem

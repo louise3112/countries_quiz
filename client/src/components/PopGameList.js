@@ -12,7 +12,13 @@ const MysteryCard = styled.p`
     font-weight: bolder;
 `
 
-const PopGameList = ({countries, processAnswer}) => {
+const GameResult = styled.p`
+    font-size: 48px;
+    font-weight: bolder;
+    text-align: center;
+`
+
+const PopGameList = ({countries, processAnswer, gameOver, gameWon}) => {
 
     const listOfPopGameItems = countries.map(country => {
         if (country.status === "none") {
@@ -23,9 +29,12 @@ const PopGameList = ({countries, processAnswer}) => {
     })
 
     return (
-        <ListOfCountryCards>
-            {listOfPopGameItems}
-        </ListOfCountryCards>
+        <>
+            {gameOver && <GameResult>{gameWon ? "\u2705 You Win!! \u2705" : "\u274C You lose... \u274C" }</GameResult> }
+            <ListOfCountryCards>
+                {listOfPopGameItems}
+            </ListOfCountryCards>
+        </>
     )
 }
 

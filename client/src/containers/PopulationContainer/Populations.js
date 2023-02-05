@@ -8,22 +8,32 @@ import PopGameList from "../../components/PopGameList"
 const PopulationQuiz = () => {
 
     const [countriesToPlay, setCountriesToPlay] = useState([])
+    const [gameOver, setGameOver] = useState(false)
+    const [gameWon, setGameWon] = useState(false)
 
     const processAnswer = (country, answer) => {
-        if (country.answer === answer) {
-            const updatedCountries = countriesToPlay.map(country => {
-                return {...country}
-            })
-            updatedCountries[country.cardPosition].status = "previous"
-            updatedCountries[country.cardPosition - 1].status = "played"
-            updatedCountries[country.cardPosition + 1].status = "current"
+        const updatedCountries = countriesToPlay.map(singleCountry => {
+            return {...singleCountry}
+        })
 
-            setCountriesToPlay(updatedCountries)
+        updatedCountries[country.cardPosition].status = "previous"
+        updatedCountries[country.cardPosition - 1].status = "played"
 
-            // Add any markings to indicate correct answer?
+        console.log("Correct answer: " + country.answer)
+        console.log("User answer: " + answer)
+
+        {country.answer === answer ? updatedCountries[country.cardPosition].guessCorrect = true : updatedCountries[country.cardPosition].guessCorrect = false}
+
+        if (country.cardPosition === countriesToPlay.length - 1) {
+            setGameOver(true)
+            setGameWon(updatedCountries[country.cardPosition].guessCorrect)
+        } else if (!updatedCountries[country.cardPosition].guessCorrect) {
+            setGameOver(true)
         } else {
-            // What do we want to happen if they guess wrongly?!
+            updatedCountries[country.cardPosition + 1].status = "current"
         }
+
+        setCountriesToPlay(updatedCountries)
     }
 
     const getAnswer = (array, index, keyToCheck) => {
@@ -37,7 +47,11 @@ const PopulationQuiz = () => {
     const prepCountries = (countriesArray) => {
         const countriesToUse = randomCountries(countriesArray, 6)
         const countriesReadyToPlay = countriesToUse.map((country, index) => {
-            return {...country, status: "none", answer: "", cardPosition: index}
+            return {...country, 
+                    status: "none", 
+                    answer: "", 
+                    cardPosition: index, 
+                    guessCorrect: null}
         })
         countriesReadyToPlay[0].status = "previous"
         countriesReadyToPlay[1].status = "current"
@@ -45,7 +59,6 @@ const PopulationQuiz = () => {
         for (let i = 1; i < countriesReadyToPlay.length; i++) {
             countriesReadyToPlay[i].answer = getAnswer(countriesReadyToPlay, i, "population")
         }
-        console.log(countriesReadyToPlay)
         return countriesReadyToPlay
     }
 
@@ -61,7 +74,7 @@ const PopulationQuiz = () => {
         <div>
             <h2>Play Your Population Right!</h2>
             <p>Decide whether the population for the country revealed is 'Higher' or 'Lower' than the population of the previous country and select the relevant button! </p>
-            <PopGameList countries = {countriesToPlay} processAnswer={processAnswer} />
+            <PopGameList countries = {countriesToPlay} processAnswer={processAnswer} gameOver = {gameOver} gameWon = {gameWon}/>
         </div>
     )
 }
