@@ -1,29 +1,39 @@
+import { useState } from "react"
 import { randomCountries } from "../../helpers/usefulFunctions"
 
-import PopGameItem from "../../components/PopGameItem"
+import PopGameList from "../../components/PopGameList"
 
-import styled from "styled-components"
-
-const ListOfCountryCards = styled.ul`
-    list-style: none;
-    display: flex;
-    justify-content: space-evenly;
-`
 
 const PopulationQuiz = ({countries}) => {
 
-    const listOfPopGameItems = randomCountries(countries, 6).map(country => {
-        return <PopGameItem country={country} key={country.name.common}/>
-    })
+    const getAnswer = (array, index, keyToCheck) => {
+        if (array[index][keyToCheck] >= array[index - 1][keyToCheck]) {
+            return "higher"
+        } else {
+            return "lower"
+        }
+    }
 
+    const prepCountries = () => {
+        const countriesToUse = randomCountries(countries, 6)
+        const countriesReadyToPlay = countriesToUse.map((country, index) => {
+            return {...country, status: "none", answer: "", cardPosition: index}
+        })
+        countriesReadyToPlay[0].status = "previous"
+        countriesReadyToPlay[1].status = "current"
+
+        for (let i = 1; i < countriesReadyToPlay.length; i++) {
+            countriesReadyToPlay[i].answer = getAnswer(countriesReadyToPlay, i, "population")
+        }
+        console.log(countriesReadyToPlay)
+        return countriesReadyToPlay
+    }
 
     return (
         <div>
             <h2>Play Your Population Right!</h2>
-            <p>Decide whether the population for the country revealed is 'Higher' or 'Lower' than the population of the previous country and select the relevant button! Be careful though, 2 strikes and you're out!!</p>
-            <ListOfCountryCards>
-                {listOfPopGameItems}
-            </ListOfCountryCards>
+            <p>Decide whether the population for the country revealed is 'Higher' or 'Lower' than the population of the previous country and select the relevant button! </p>
+            <PopGameList countries = {prepCountries()} />
         </div>
     )
 }
