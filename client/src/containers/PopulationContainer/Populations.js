@@ -1,21 +1,30 @@
 import PopGameItem from "../../components/PopGameItem"
+import { randomCountries } from "../../helpers/usefulFunctions"
+import { getAllCountries } from "../../helpers/countryDataFetches"
+import styled from "styled-components"
 
-const PopulationQuiz = ({countries}) => {
+const ListOfCountryCards = styled.ul`
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+`
 
-    const randomSelection = (array) => {
-        const selected = []
-        const remaining = [...array]
+const PopulationQuiz = () => {
 
-        for (let i = 0; i < 6; i++) {
-            let index = Math.floor(Math.random() * remaining.length)
-            selected.push(remaining[index])
-            remaining.splice(index, 1)
-        }
+    // const randomSelection = (array) => {
+    //     const selected = []
+    //     const remaining = [...array]
+
+    //     for (let i = 0; i < 6; i++) {
+    //         let index = Math.floor(Math.random() * remaining.length)
+    //         selected.push(remaining[index])
+    //         remaining.splice(index, 1)
+    //     }
         
-        return selected
-    }
+    //     return selected
+    // }
 
-    const listOfPopGameItems = randomSelection(countries).map(country => {
+    const listOfPopGameItems = randomCountries(getAllCountries(), 6).map(country => {
         return <PopGameItem country={country} key={country.name.common}/>
     })
 
@@ -24,7 +33,9 @@ const PopulationQuiz = ({countries}) => {
         <div>
             <h2>Play Your Population Right!</h2>
             <p>Decide whether the population for the country revealed is 'Higher' or 'Lower' than the population of the previous country and select the relevant button! Be careful though, 2 strikes and you're out!!</p>
-            {listOfPopGameItems}
+            <ListOfCountryCards>
+                {listOfPopGameItems}
+            </ListOfCountryCards>
         </div>
     )
 }

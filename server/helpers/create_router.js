@@ -1,7 +1,7 @@
-const express = require('express')
-const ObjectId = require('mongodb').ObjectId
+import express from 'express'
+import {ObjectId} from 'mongodb'
 
-const createRouter = function(collection) {
+export const createRouter = function(collection) {
     
     const router = express.Router()
 
@@ -69,5 +69,3 @@ const createRouter = function(collection) {
 
     return router
 }
-
-module.exports = createRouter
