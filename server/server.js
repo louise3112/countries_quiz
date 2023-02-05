@@ -1,17 +1,18 @@
 import { getCountriesCollection } from './db/db_connection.js'
-import { Express } from 'express'
-// const express = require('express')
+import express from 'express'
 const app = express()
 
 
-const cors = require('cors')
+import cors from 'cors'
 app.use(cors())
 app.use(express.json())
 
-const createRouter = require('./helpers/create_router');
+
+import {createRouter} from './helpers/create_router.js'
 const countriesCollection = await getCountriesCollection()
 const countriesRouter = createRouter(countriesCollection)
 app.use('/api/countries', countriesRouter)
+
 
 app.listen(9000, function(){
     console.log(`Listening on port ${this.address().port}`)
