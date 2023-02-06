@@ -35,7 +35,7 @@ const Images = styled.img`
     border-radius: 4px;
 `
 const Box = styled.div`
-    width: 45%;
+    width: 16em;
     margin-bottom: 6px;
     border: 1px solid #ccc;
     text-align: center;
