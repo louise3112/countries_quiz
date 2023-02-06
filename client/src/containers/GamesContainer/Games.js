@@ -5,6 +5,7 @@ import City from '../images/cityscape.jpg'
 import Flags from '../images/flags.jpg'
 import Population from '../images/Population.jpeg'
 import Compass from '../images/Compass.jpeg'
+import { Link } from "react-router-dom";
 
 const GamesGrid = styled.div`
     display: flex;
@@ -17,6 +18,7 @@ const GamesGrid = styled.div`
 `
 const GamesItems = styled.li`
     background-color: #5F898A;
+    text-decoration: none;
     color: white;
     &:hover {
         color: gold;
@@ -24,6 +26,7 @@ const GamesItems = styled.li`
     margin-top: 20px;
     list-style: none;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-decoration: none;
     font-size: 1.2rem;
 `
 const Images = styled.img`
@@ -32,11 +35,11 @@ const Images = styled.img`
     border-radius: 4px;
 `
 const Box = styled.div`
-    width: 30%;
+    width: 45%;
     margin-bottom: 6px;
     border: 1px solid #ccc;
     text-align: center;
-    padding: 20px;
+    padding: 45px;
     background-color: #5F898A;
     border-radius: 10px;
     box-shadow: 0 6px 10px #4B5452;
@@ -48,26 +51,29 @@ const Games = () => {
         <div className="Games-container">
         <GamesGrid className="Games-list">
             <Box>
-            <Images className='Globe' src={Globe} alt='Globe'/> 
-            <GamesItems >Countries Facts</GamesItems>
-            </Box>
-            <Box>
+            <Link to="/FlagQuiz">
             <Images className='Flags' src={Flags} alt='Flags'/>
             <GamesItems>Flag Quiz</GamesItems>
+            </Link>
             </Box>
             <Box>
+            <Link to="/CountriesQuiz">
             <Images className='City' src={City} alt='City'/> 
             <GamesItems>Countries Quiz</GamesItems>
+            </Link>
             </Box> 
             <Box>
+            <Link to="/PopulationQuiz">
             <Images className='Population' src={Population} alt='Population'/> 
             <GamesItems>Population Quiz</GamesItems>
+            </Link>
             </Box>  
             <Box>  
+            <Link to="/LocationQuiz">
             <Images className='Compass' src={Compass} alt='Compass'/> 
             <GamesItems>Country Location Quiz</GamesItems>
+            </Link>
             </Box>  
-            <Box />  
         </GamesGrid>
         <footer>
         </footer>
