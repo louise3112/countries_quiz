@@ -18,7 +18,11 @@ const GameResult = styled.p`
     text-align: center;
 `
 
-const PopGameList = ({countries, processAnswer, gameOver, gameWon}) => {
+const PopGameList = ({countries, processAnswer, gameOver, gameWon, newGame}) => {
+
+    const handleClick = () => {
+        newGame()
+    }
 
     const listOfPopGameItems = countries.map(country => {
         if (country.status === "none") {
@@ -31,6 +35,7 @@ const PopGameList = ({countries, processAnswer, gameOver, gameWon}) => {
     return (
         <>
             {gameOver && <GameResult>{gameWon ? "\u2705 You Win!! \u2705" : "\u274C You lose... \u274C" }</GameResult> }
+            {gameOver && <button onClick={handleClick}>Play again?</button>}
             <ListOfCountryCards>
                 {listOfPopGameItems}
             </ListOfCountryCards>

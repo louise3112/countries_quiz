@@ -11,6 +11,12 @@ const PopulationQuiz = () => {
     const [gameOver, setGameOver] = useState(false)
     const [gameWon, setGameWon] = useState(false)
 
+    const newGame = () => {
+        getData()  // Reset countriesToPlay state
+        setGameOver(false)  // Reset gameOver state
+        setGameWon(false)  // Reset gameWon state
+    }
+
     const processAnswer = (country, answer) => {
         const updatedCountries = countriesToPlay.map(singleCountry => {
             return {...singleCountry}
@@ -59,19 +65,23 @@ const PopulationQuiz = () => {
         return countriesReadyToPlay
     }
 
-    useEffect( () => {
+    const getData = () => {
         getAllCountries()
-            .then(allCountries => {
-                const selectedCountries = prepCountries(allCountries)
-                setCountriesToPlay(selectedCountries)
-            })
+        .then(allCountries => {
+            const selectedCountries = prepCountries(allCountries)
+            setCountriesToPlay(selectedCountries)
+        })
+    }
+
+    useEffect( () => {
+        getData()
     }, [])
 
     return (
         <div>
             <h2>Play Your Population Right!</h2>
             <p>Decide whether the population for the country revealed is 'Higher' or 'Lower' than the population of the previous country and select the relevant button! </p>
-            <PopGameList countries = {countriesToPlay} processAnswer={processAnswer} gameOver = {gameOver} gameWon = {gameWon}/>
+            <PopGameList countries = {countriesToPlay} processAnswer={processAnswer} gameOver={gameOver} gameWon={gameWon} newGame={newGame}/>
         </div>
     )
 }
