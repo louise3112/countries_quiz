@@ -10,3 +10,8 @@ export const randomCountries = (array, n) => {
     
     return selected
 }
+
+// Selects a random index from a given total of indexes
+export const randomIndex = (totalOptions) => {
+    return Math.floor(Math.random() * totalOptions)
+  }
