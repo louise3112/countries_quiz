@@ -7,9 +7,12 @@ const CountriesList = ({allCountries}) => {
         })
 
     return (
-                <ul>
-                {countryItems}
+        <>
+        <h4>Countries:</h4>
+                <ul> 
+                    {countryItems}
                 </ul>
+        </>
     )
 
 }

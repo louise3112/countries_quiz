@@ -10,6 +10,7 @@ import FlagsQuiz from './containers/FlagContainer/FlagQuiz';
 import LocationQuiz from './containers/LocationContainer/Location';
 import PopulationQuiz from './containers/PopulationContainer/Population';
 import CountriesQuiz from './containers/QuizContainer/Quiz';
+import Country from './components/Country';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Games />} />
                     <Route path="/CountriesFacts" element={<Countries />} />
+                    <Route path="/CountriesFacts/:id" element={<Country />} />
                     <Route path="/FlagQuiz" element={<FlagsQuiz />} />
                     <Route path="/CountriesQuiz" element={<CountriesQuiz />} />
                     <Route path="/PopulationQuiz" element={<PopulationQuiz />} />

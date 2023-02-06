@@ -5,14 +5,10 @@ import CountriesList from "../../components/CountriesList"
 const Countries = () => {
 
     const [allCountries, setAllCountries] = useState([])
-    const [selectedCountry, setSelectedCountry] = useState (null)
 
     useEffect(() => {
         getAllCountries()
-        .then(result => {
-            console.log(result)
-            setAllCountries(result)})
-        .then(console.log(allCountries))
+        .then(result => setAllCountries(result))
     }, [])
 
 
