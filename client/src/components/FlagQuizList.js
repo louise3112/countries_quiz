@@ -1,5 +1,6 @@
 import React, { useState , useEffect } from "react"
 import FlagsQuizItem from "./FlagQuizItem"
+import styled from "styled-components"
 
 const FlagsQuizList = ({answerOptions , processGuess, hasUserAnswered, userCorrect}) => {
 
@@ -9,11 +10,24 @@ const FlagsQuizList = ({answerOptions , processGuess, hasUserAnswered, userCorre
         return <FlagsQuizItem key={answer._id} answer={answer} processGuess={processGuess} />
     })
 
+    const Flag = styled.img`
+    width: 30em;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid lightgrey;
+    `
+    const Answer = styled.p`
+    text-align: center;
+    `
+
+
     return (
         <div>
-            {flagToShowObject &&<img src={flagToShowObject.flag} />}
+            {flagToShowObject &&<Flag src={flagToShowObject.flag}></Flag>}
             { hasUserAnswered 
-                ?  <p>{userCorrect ? "you're right" : "you're wrong"} </p>
+                ?  <Answer>{userCorrect ? "you're right" : "you're wrong"} </Answer>
                 : <ul>{listOfAnswerItems}</ul> }
         </div>
     )
