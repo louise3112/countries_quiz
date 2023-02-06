@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Logo from './images/Logo.png'
+import { useState } from "react";
 import './NavBar/Navbar.css'
 
 
@@ -32,7 +33,7 @@ background-color: #3c7f61;
 color: #BECE3A;
 }
 left: 10%; 
-width: 3em;
+width: 8em;
 display: inline;
 top: 2rem;
 padding: 1.8em;
@@ -42,19 +43,42 @@ justify-content: space-between;
 position: relative;
 `
 
+const QuizzesDropDown = styled.div`
+display: flex;
+flex-direction: column;
+background-color: #3c7f61;
+color: #fff;
+position: absolute;
+top: 60px;
+left: 0;
+`;
+
 const NavBar = () => {
+
+    const [showQuizzes, setShowQuizzes] = useState(false);
 
     return (
         <>
         <img className='Logo' src={Logo} alt='Logo'/> 
         <NavBarStyle>
+        <header>
             <NavBarLayout>
-                <NavLink to="/">Games</NavLink>
+                <NavLink to="/" onMouseEnter={() => setShowQuizzes(!showQuizzes)}>
+                Games
+                </NavLink>
+                {showQuizzes && (
+                <QuizzesDropDown>
+                    <NavLink to="/FlagQuiz">Flag Quiz</NavLink>
+                    <NavLink to="/CountriesQuiz">Countries Quiz</NavLink>
+                    <NavLink to="/PopulationQuiz">Population Quiz</NavLink>
+                    <NavLink to="/LocationQuiz">Location Quiz</NavLink>
+                </QuizzesDropDown>
+            )}
             </NavBarLayout>
             <NavBarLayout>
                 <NavLink to="/CountriesFacts">Countries Facts</NavLink>
             </NavBarLayout>
-            <NavBarLayout>
+            {/* <NavBarLayout>
                 <NavLink to="/FlagQuiz">Flag Quiz</NavLink>
             </NavBarLayout>
             <NavBarLayout>
@@ -65,7 +89,8 @@ const NavBar = () => {
             </NavBarLayout>
             <NavBarLayout>
                 <NavLink to="/LocationQuiz">Location Quiz</NavLink>
-            </NavBarLayout>
+            </NavBarLayout> */}
+        </header>
         </NavBarStyle>
         </>
     )
