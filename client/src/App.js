@@ -1,4 +1,7 @@
 import {useState, useEffect} from 'react'
+import { getAllCountries } from './helpers/countryDataFetches'
+
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from './containers/NavBar';
 import Games from './containers/GamesContainer/Games';
@@ -11,19 +14,19 @@ import CountriesQuiz from './containers/QuizContainer/Quiz';
 
 function App() {
 
-    const [countriesData, setCountriesData] = useState([])
+    // const [countriesData, setCountriesData] = useState([])
 
-    const getCountriesData = () => {
-        return fetch("https://restcountries.com/v3.1/all")
-            .then(res => res.json())
-    }
+    // // const getCountriesData = () => {
+    // //     return fetch("https://restcountries.com/v3.1/all")
+    // //         .then(res => res.json())
+    // // }
 
-    useEffect(() => {
-        getCountriesData()
-            .then(allCountries => {
-                setCountriesData(allCountries)
-            })
-    }, [])
+    // useEffect(() => {
+    //     getAllCountries()
+    //         .then(allCountries => {
+    //             setCountriesData(allCountries)
+    //         })
+    // }, [])
 
     return (
         <div className="App">
@@ -36,7 +39,7 @@ function App() {
                     <Route path="/CountriesFacts" element={<Countries />} />
                     <Route path="/FlagQuiz" element={<FlagsQuiz />} />
                     <Route path="/CountriesQuiz" element={<CountriesQuiz />} />
-                    <Route path="/PopulationQuiz" element={<PopulationQuiz countries={countriesData}/>} />
+                    <Route path="/PopulationQuiz" element={<PopulationQuiz />} />
                     <Route path="/LocationQuiz" element={<LocationQuiz />} />
                 </Routes>
             </Router>
