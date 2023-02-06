@@ -19,9 +19,6 @@ const PopulationQuiz = () => {
         updatedCountries[country.cardPosition].status = "previous"
         updatedCountries[country.cardPosition - 1].status = "played"
 
-        console.log("Correct answer: " + country.answer)
-        console.log("User answer: " + answer)
-
         {country.answer === answer ? updatedCountries[country.cardPosition].guessCorrect = true : updatedCountries[country.cardPosition].guessCorrect = false}
 
         if (country.cardPosition === countriesToPlay.length - 1) {
