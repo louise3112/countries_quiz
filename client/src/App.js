@@ -8,7 +8,7 @@ import Games from './containers/GamesContainer/Games';
 import Countries from './containers/CountriesContainer/Countries';
 import FlagsQuiz from './containers/FlagContainer/FlagQuiz';
 import LocationQuiz from './containers/LocationContainer/Location';
-import PopulationQuiz from './containers/PopulationContainer/Populations';
+import PopulationQuiz from './containers/PopulationContainer/Population';
 import CountriesQuiz from './containers/QuizContainer/Quiz';
 
 
