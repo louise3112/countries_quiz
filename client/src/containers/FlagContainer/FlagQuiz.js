@@ -4,6 +4,10 @@ import React, { useState , useEffect } from "react"
 import FlagsQuizList from "../../components/FlagQuizList"
 import styled from "styled-components"
 
+const Text = styled.h3`
+text-align: center;
+`
+
 const FlagsQuiz = () => {
 
     const [answerOptions, setAnswerOptions] = useState([])
@@ -40,9 +44,6 @@ const FlagsQuiz = () => {
             })
     },[])
 
-    const Text = styled.h3`
-    text-align: center;
-    `
 
     return (
         <div>
