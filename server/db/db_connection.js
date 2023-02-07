@@ -10,3 +10,14 @@ export const getCountriesCollection = async function () {
     .catch(console.err);
 }
 
+
+
+export const getStatsCollection = async function () {
+    return MongoClient.connect('mongodb://127.0.0.1:27017', {useUnifiedTopology: true})
+    .then(client => {
+        const db = client.db('countries_quiz')
+        const statsCollection = db.collection('stats')
+        return statsCollection
+    })
+    .catch(console.err);
+}
