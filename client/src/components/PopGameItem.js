@@ -21,6 +21,14 @@ const Item = styled.div`
     top: 0.5em;
 `
 
+const AnswerButton = styled.button`
+    margin-left: 2em;
+    background-color: rgb(155, 162, 31);
+    color: black;
+    padding: 10px 25px;
+    border-radius: 4px;
+`
+
 const PopGameItem = ({country, processAnswer}) => {
 
     const handleClick = (evt) => {
@@ -29,13 +37,13 @@ const PopGameItem = ({country, processAnswer}) => {
 
     return (
         <Item>
-            {country.status === "current" && <button onClick={handleClick} value="higher">HIGHER</button>}
+            {country.status === "current" && <AnswerButton onClick={handleClick} value="higher">HIGHER</AnswerButton>}
             <div className="country-card">
                 <h4>{country.name}</h4>
                 <FlagPic src={country.flag} alt={"Flag for " + country.name} height={"100em"} width={"150em"}/>
                 <p><b>Population:</b> {country.status === "current" ? "????" : country.population.toLocaleString()}</p>
             </div>
-            {country.status === "current" && <button onClick={handleClick} value="lower">LOWER</button>}
+            {country.status === "current" && <AnswerButton onClick={handleClick} value="lower">LOWER</AnswerButton>}
             {country.guessCorrect && <Answer>&#9989;</Answer>}
             {country.guessCorrect === false && <Answer>&#10060;</Answer>}
         </Item>
