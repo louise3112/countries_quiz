@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import { getAllCountries } from './helpers/countryDataFetches'
-
+import Continents from './containers/ContinentsContainer/Continents';
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from './containers/NavBar';
@@ -43,6 +43,9 @@ function App() {
                     <Route path="/CountriesQuiz" element={<CountriesQuiz />} />
                     <Route path="/PopulationQuiz" element={<PopulationQuiz />} />
                     <Route path="/LocationQuiz" element={<LocationQuiz />} />
+                    <Route path="/Continents" element={<Continents />} />
+                    
+
                 </Routes>
             </Router>
         </div>
