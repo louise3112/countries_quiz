@@ -78,6 +78,7 @@ const NavBar = () => {
             </NavBarLayout>
             <NavBarLayout>
                 <NavLink to="/CountriesFacts">Countries Facts</NavLink>
+                <NavLink to="/Continents">Continents</NavLink>
             </NavBarLayout>
             {/* <NavBarLayout>
                 <NavLink to="/FlagQuiz">Flag Quiz</NavLink>
