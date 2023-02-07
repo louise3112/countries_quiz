@@ -1,11 +1,19 @@
+import { useEffect, useState } from "react"
+import { getAllCountries } from "../../helpers/countryDataFetches"
+import CountriesList from "../../components/CountriesList"
 
 const Countries = () => {
 
+    const [allCountries, setAllCountries] = useState([])
 
+    useEffect(() => {
+        getAllCountries()
+        .then(result => setAllCountries(result))
+    }, [])
 
 
     return (
-        <h1> This is where the countries will info details will go.</h1>
+        <CountriesList allCountries={allCountries} />
     )
 
 }
