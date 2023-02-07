@@ -10,11 +10,30 @@ const PopulationQuiz = () => {
     const [countriesToPlay, setCountriesToPlay] = useState([])
     const [gameOver, setGameOver] = useState(false)
     const [gameWon, setGameWon] = useState(false)
+    const [gameStats, setGameStats] = useState({
+        played: 0,
+        won: 0,
+        correctGuesses: []
+    })
+
+    const newGame = () => {
+        // Update gameStats state:
+        const stats = {...gameStats}
+        stats.played += 1
+        if (gameWon) {stats.won += 1}
+        setGameStats(stats)
+
+        // Reset all other states for next game:
+        getData()
+        setGameOver(false)
+        setGameWon(false)
+    }
 
     const processAnswer = (country, answer) => {
         const updatedCountries = countriesToPlay.map(singleCountry => {
             return {...singleCountry}
         })
+        const stats = {...gameStats}
 
         updatedCountries[country.cardPosition].status = "previous"
         updatedCountries[country.cardPosition - 1].status = "played"
@@ -24,13 +43,17 @@ const PopulationQuiz = () => {
         if (country.cardPosition === countriesToPlay.length - 1) {
             setGameOver(true)
             setGameWon(updatedCountries[country.cardPosition].guessCorrect)
+            {country.answer === answer ? stats.correctGuesses.push(country.cardPosition) : stats.correctGuesses.push(country.cardPosition - 1)}
+
         } else if (!updatedCountries[country.cardPosition].guessCorrect) {
             setGameOver(true)
+            stats.correctGuesses.push(country.cardPosition - 1)
         } else {
             updatedCountries[country.cardPosition + 1].status = "current"
         }
 
         setCountriesToPlay(updatedCountries)
+        setGameStats(stats)
     }
 
     const getAnswer = (array, index, keyToCheck) => {
@@ -59,19 +82,24 @@ const PopulationQuiz = () => {
         return countriesReadyToPlay
     }
 
-    useEffect( () => {
+    const getData = () => {
         getAllCountries()
-            .then(allCountries => {
-                const selectedCountries = prepCountries(allCountries)
-                setCountriesToPlay(selectedCountries)
-            })
+        .then(allCountries => {
+            const selectedCountries = prepCountries(allCountries)
+            setCountriesToPlay(selectedCountries)
+        })
+    }
+
+    useEffect( () => {
+        getData()
     }, [])
 
     return (
         <div>
             <h2>Play Your Population Right!</h2>
+            <h4>Games Played: {gameStats.played} &nbsp; &nbsp; | &nbsp; &nbsp; Games Won: {gameStats.won}</h4>
             <p>Decide whether the population for the country revealed is 'Higher' or 'Lower' than the population of the previous country and select the relevant button! </p>
-            <PopGameList countries = {countriesToPlay} processAnswer={processAnswer} gameOver = {gameOver} gameWon = {gameWon}/>
+            <PopGameList countries={countriesToPlay} processAnswer={processAnswer} gameOver={gameOver} gameWon={gameWon} newGame={newGame}/>
         </div>
     )
 }
