@@ -2,6 +2,11 @@ import { randomCountries , randomIndex } from "../../helpers/usefulFunctions"
 import { getAllCountries } from "../../helpers/countryDataFetches"
 import React, { useState , useEffect } from "react"
 import FlagsQuizList from "../../components/FlagQuizList"
+import styled from "styled-components"
+
+const Text = styled.h3`
+text-align: center;
+`
 
 const FlagsQuiz = () => {
 
@@ -39,9 +44,10 @@ const FlagsQuiz = () => {
             })
     },[])
 
+
     return (
         <div>
-            <h1>BLAH BLAH</h1>
+            <Text>Guess what countries flag this is. Choose from one of the three options below.</Text>
             <FlagsQuizList answerOptions={answerOptions} processGuess={processGuess}
             hasUserAnswered={hasUserAnswered} userCorrect={userCorrect}  />
         </div>
