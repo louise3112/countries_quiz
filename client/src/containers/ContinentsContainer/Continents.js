@@ -1,27 +1,45 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import ContinentsList from "../../components/ContinentsList"
+import { getAllCountries } from "../../helpers/countryDataFetches"
+import SearchCountryForm from "../../components/SearchCountryForm"
 
 const Continents = () => {
 
     const [allContinents, setAllContinents] = useState([])
+    const [allCountries, setAllCountries] = useState([])
+    const [searchText, setSearchText] = useState("")
+
+    const handleChange =function(event) {
+        setSearchText(event.target.value)
+    }
+
+    const searchedCountry = (allCountries, searchText) => {
+        return allCountries.filter((country) => country.name.toLowerCase().includes(searchText) || country.code.toLowerCase().includes(searchText))
+    }
+
 
     
     
     useEffect(() => {
         getAllCountries()
         .then(allCountries => {
-            const allContinentsNamesWithDuplicates = allCountries.map(country => country.continent)
-            const uniqueContinentNames = new Set([...allContinentsNamesWithDuplicates])
+            setAllCountries(allCountries)
+            const allContinentsNamesWithDuplicates = allCountries.map(country => country.continents).flat(1)
+            const uniqueContinentNames = Array.from(new Set([...allContinentsNamesWithDuplicates]).values())
             setAllContinents(uniqueContinentNames)
         })
         
     }, [])
 
     return (
-        <ContinentsList allContinents={allContinents}/>
+        <>
+            <SearchCountryForm searchText={searchText} handleChange={handleChange}/>
+            <ContinentsList allCountries={searchedCountry(allCountries, searchText)} allContinents={allContinents}/>
+        </>
     )
 
 }
+
 
 
 

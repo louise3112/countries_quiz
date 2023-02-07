@@ -1,35 +1,24 @@
-import ContinentItem from "./ContinentItem"
-import Continents from "../containers/ContinentsContainer/Continents"
+import CountriesList from "./CountriesList"
 
-const ContinentsList = ({Allcountries}) => {
+const ContinentsList = ({allContinents, allCountries}) => {
+    const countriesByContinent = allContinents.map(continent => {
+        const countriesForContinent = allCountries.filter(country => country.continents.includes(continent))
+        return (<>
+        <h2>{continent}</h2>
+        <CountriesList allCountries= {countriesForContinent}/>
+        </>)
+    })
+    
+
     return (
         <>
-            {posts.map((post,index) => {
-                return (
-                    <PostItem post={post} key={index}/>
-                )
-            })}
+        <h4>Countries in this Continent</h4>
+            <ul>
+                {countriesByContinent}
+            </ul>
         </>
     )
-
-    
 }
 
 
-
-
 export default ContinentsList
-
-// // For (continent in allContinents:
-// const countriesContinents = Allcountries.filter(country => country.continents.includes(continent))
-
-
-
-// return (
-//     <>
-//     <h4>Countries in this Continent</h4>
-//         <ul>
-//             {countriesContinents}
-//         </ul>
-//     </>
-// )
