@@ -1,5 +1,5 @@
 import fetch from 'node-fetch'
-import { getCountriesCollection } from './db_connection.js'
+import { getCountriesCollection, getStatsCollection } from './db_connection.js'
 
 const getCountries = async function () {
     return fetch ("https://restcountries.com/v3.1/all")
@@ -35,7 +35,7 @@ countriesCollection.estimatedDocumentCount({})
         if (collectionCount > 0) {
             countriesCollection.drop()
             .then(res => {
-                console.log("Collection deleted");
+                console.log("Countries collection deleted");
                 return res
             })
         }
@@ -43,8 +43,40 @@ countriesCollection.estimatedDocumentCount({})
     .then(res => {
         countriesCollection.insertMany(countriesList)
             .then(res => {
-                console.log("Number of documents inserted: " + res.insertedCount);
+                console.log("Number of country documents inserted: " + res.insertedCount);
                 // to finish the run comand
+                process.exit()
+            })
+        return res
+    })
+
+const statsCollection = await getStatsCollection()
+statsCollection.estimatedDocumentCount({})
+    .then(collectionCount => {
+        if (collectionCount > 0) {
+            statsCollection.drop()
+                .then(res => {
+                    console.log("Stats collection deleted")
+                    return res
+                })
+        }
+    })
+    .then(res => {
+        statsCollection.insertMany(
+            [{
+                username : "testUser",
+                popGame : {
+                    played : 0,
+                    won : 0,
+                    correctGuesses : []
+                },
+                flagQuiz : {
+                    highStreak : 0,
+                    currentStreak : 0
+                }
+            }])
+            .then(res => {
+                console.log("Number of stats documents inserted: " + res.insertedCount)
                 process.exit()
             })
         return res
