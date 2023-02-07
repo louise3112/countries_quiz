@@ -1,11 +1,24 @@
-import { randomCountries , randomIndex } from "../../helpers/usefulFunctions"
+import { randomCountries, randomIndex } from "../../helpers/usefulFunctions"
 import { getAllCountries } from "../../helpers/countryDataFetches"
-import React, { useState , useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import FlagsQuizList from "../../components/FlagQuizList"
 import styled from "styled-components"
+import '../../App.js'
 
 const Text = styled.h3`
 text-align: center;
+margin: 0;
+margin-bottom: 1em; 
+padding: 15px; 
+`
+
+const Header = styled.h1`
+position: relative;
+text-align: center;
+font-family: 'Oswald', sans-serif;
+font-size: 2.5em;
+margin-top: 10px; 
+margin-bottom: 6px; 
 `
 
 const FlagsQuiz = () => {
@@ -19,8 +32,9 @@ const FlagsQuiz = () => {
         const answersList = randomCountriesArray.map((country, index) => {
             return {
                 ...country,
-                isCorrect : index === correctAnswerIndex
-            }}
+                isCorrect: index === correctAnswerIndex
+            }
+        }
         )
         return answersList
     }
@@ -34,7 +48,7 @@ const FlagsQuiz = () => {
         setScore(result ? score + 1 : 0)
         if (result && score + 1 > highScore) {
             setHighScore(score + 1)
-          }
+        }
         setUserCorrect(result)
         sethasUserAnswered(true)
     }
@@ -42,11 +56,11 @@ const FlagsQuiz = () => {
     const processRefresh = () => {
         getAllCountries()
             .then(allCountries => {
-            const selectedAnswers = prepAnswers(allCountries)
-            setAnswerOptions(selectedAnswers)
-            setUserCorrect(false)
-            sethasUserAnswered(false)
-    })
+                const selectedAnswers = prepAnswers(allCountries)
+                setAnswerOptions(selectedAnswers)
+                setUserCorrect(false)
+                sethasUserAnswered(false)
+            })
     }
 
     useEffect(() => {
@@ -55,21 +69,21 @@ const FlagsQuiz = () => {
                 const selectedAnswers = prepAnswers(allCountries)
                 setAnswerOptions(selectedAnswers)
             })
-    },[])
+    }, [])
 
 
     return (
         <div>
-            <h1>Flag Quiz</h1>
+            <Header>Flag Quiz</Header>
             <Text>Guess what countries flag this is. Choose from one of the three options below.</Text>
             <FlagsQuizList answerOptions={answerOptions} processGuess={processGuess}
-            hasUserAnswered={hasUserAnswered} userCorrect={userCorrect} 
-            processRefresh={processRefresh} score={score} 
-            highScore={highScore} />
+                hasUserAnswered={hasUserAnswered} userCorrect={userCorrect}
+                processRefresh={processRefresh} score={score}
+                highScore={highScore} />
         </div>
     )
 
-    }
+}
 
 
 export default FlagsQuiz
