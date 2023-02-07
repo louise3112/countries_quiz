@@ -1,27 +1,26 @@
 import { useState, useEffect } from "react"
 import { randomCountries } from "../../helpers/usefulFunctions"
 import { getAllCountries } from "../../helpers/countryDataFetches"
+import { updateAUser } from "../../helpers/statsDataFetches"
 
 import PopGameList from "../../components/PopGameList"
 
 
-const PopulationQuiz = () => {
+const PopulationQuiz = ({user, updateScores}) => {
 
     const [countriesToPlay, setCountriesToPlay] = useState([])
     const [gameOver, setGameOver] = useState(false)
     const [gameWon, setGameWon] = useState(false)
-    const [gameStats, setGameStats] = useState({
-        played: 0,
-        won: 0,
-        correctGuesses: []
-    })
 
     const newGame = () => {
-        // Update gameStats state:
-        const stats = {...gameStats}
-        stats.played += 1
-        if (gameWon) {stats.won += 1}
-        setGameStats(stats)
+        // Update user state and DB values with scores:
+        const updatedUser = {...user}
+        const newStats = {...updatedUser.popGame}
+        newStats.played += 1
+        if (gameWon) {newStats.won += 1}
+        updatedUser.popGame = newStats
+        updateAUser(user._id, updatedUser)
+        updateScores(updatedUser)
 
         // Reset all other states for next game:
         getData()
@@ -33,27 +32,31 @@ const PopulationQuiz = () => {
         const updatedCountries = countriesToPlay.map(singleCountry => {
             return {...singleCountry}
         })
-        const stats = {...gameStats}
+        // const stats = {...gameStats}
 
         updatedCountries[country.cardPosition].status = "previous"
         updatedCountries[country.cardPosition - 1].status = "played"
 
-        {country.answer === answer ? updatedCountries[country.cardPosition].guessCorrect = true : updatedCountries[country.cardPosition].guessCorrect = false}
+        {country.answer === answer 
+            ? updatedCountries[country.cardPosition].guessCorrect = true 
+            : updatedCountries[country.cardPosition].guessCorrect = false}
 
         if (country.cardPosition === countriesToPlay.length - 1) {
             setGameOver(true)
             setGameWon(updatedCountries[country.cardPosition].guessCorrect)
-            {country.answer === answer ? stats.correctGuesses.push(country.cardPosition) : stats.correctGuesses.push(country.cardPosition - 1)}
+            // {country.answer === answer 
+                // ? stats.correctGuesses.push(country.cardPosition) 
+                // : stats.correctGuesses.push(country.cardPosition - 1)}
 
         } else if (!updatedCountries[country.cardPosition].guessCorrect) {
             setGameOver(true)
-            stats.correctGuesses.push(country.cardPosition - 1)
+            // stats.correctGuesses.push(country.cardPosition - 1)
         } else {
             updatedCountries[country.cardPosition + 1].status = "current"
         }
 
         setCountriesToPlay(updatedCountries)
-        setGameStats(stats)
+        // setGameStats(stats)
     }
 
     const getAnswer = (array, index, keyToCheck) => {
@@ -92,12 +95,12 @@ const PopulationQuiz = () => {
 
     useEffect( () => {
         getData()
-    }, [])
+    }, [user])
 
     return (
         <div>
             <h2>Play Your Population Right!</h2>
-            <h4>Games Played: {gameStats.played} &nbsp; &nbsp; | &nbsp; &nbsp; Games Won: {gameStats.won}</h4>
+            {user.popGame && <h4>Games Played: {user.popGame.played} &nbsp; &nbsp; | &nbsp; &nbsp; Games Won: {user.popGame.won}</h4>}
             <p>Decide whether the population for the country revealed is 'Higher' or 'Lower' than the population of the previous country and select the relevant button! </p>
             <PopGameList countries={countriesToPlay} processAnswer={processAnswer} gameOver={gameOver} gameWon={gameWon} newGame={newGame}/>
         </div>
