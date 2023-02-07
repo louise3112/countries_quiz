@@ -11,6 +11,7 @@ import LocationQuiz from './containers/LocationContainer/Location';
 import PopulationQuiz from './containers/PopulationContainer/Population';
 import CountriesQuiz from './containers/QuizContainer/Quiz';
 import Country from './components/Country';
+import Footer from './components/Footer'
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
                 <header>
                     <NavBar />
                 </header>
+                <div className="main-content">
                 <Routes>
                     <Route path="/" element={<Games />} />
                     <Route path="/CountriesFacts" element={<Countries />} />
@@ -44,7 +46,9 @@ function App() {
                     <Route path="/PopulationQuiz" element={<PopulationQuiz user={user} updateScores={updateScores}/>} />
                     <Route path="/LocationQuiz" element={<LocationQuiz />} />
                 </Routes>
+                </div>
             </Router>
+            <Footer />
         </div>
     )
 }

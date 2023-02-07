@@ -3,13 +3,13 @@ import FlagsQuizItem from "./FlagQuizItem"
 import styled from "styled-components"
 
 const Flag = styled.img`
-width: 30em;
+height: 14em;
+width: auto; 
 position: relative;
 display: block;
 margin-left: auto;
 margin-right: auto;
 border: solid lightgrey;
-margin-bottom: 30px; 
 `
 const Answer = styled.p`
 text-align: center;
