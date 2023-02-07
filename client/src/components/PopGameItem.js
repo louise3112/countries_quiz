@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import './PopulationGame.css'
 
 const FlagPic = styled.img`
     border: solid grey 1px;
