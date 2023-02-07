@@ -12,16 +12,13 @@ export const randomCountries = (array, n) => {
     return selected
 }
 
-export const getLanguageForQuestion = function (n) {
+export const getLanguageForQuestion = function (listOfRandomCountries) {
     /*
     1- get n countries
     2- build a language to countries dictionary === new dictionary 
     3- filter any language in multiple country
-    4- in case filter remove all start again
     5- return random language for question === answer
-    / 
     */
-    const listOfRandomCountries = randomCountries(getAllCountries(), n)
     const languageToCountriesDict = {}
     for (let i = 0; i < listOfRandomCountries.length; i++) {
         const country = listOfRandomCountries[i] // object
@@ -39,10 +36,10 @@ export const getLanguageForQuestion = function (n) {
     }
     const languageInSingleCountry = (Object.entries(languageToCountriesDict)).filter(([language, countries]) => countries.length === 1)
     if (languageInSingleCountry.length === 0) {
-        return getLanguageForQuestion(n)
+        return undefined
     }
     else {
-        return languageInSingleCountry[0]
+        return languageInSingleCountry[randomIndex(languageInSingleCountry.length)]
     }
 }
 

@@ -11,6 +11,16 @@ margin-right: auto;
 border: solid lightgrey;
 margin-bottom: 30px; 
 `
+const Language = styled.h3`
+width: 30em;
+position: relative;
+display: block;
+margin-left: auto;
+margin-right: auto;
+border: solid lightgrey;
+margin-bottom: 30px; 
+text-align: center;
+`
 const Answer = styled.p`
 text-align: center;
 `
@@ -58,8 +68,8 @@ const QuizList = ({answerOptions , processGuess, hasUserAnswered, userCorrect, p
     const countryToShowObject = answerOptions.find(option => option.isCorrect)
 
     const flagQuestion = (countryToShowObject &&<Flag src={countryToShowObject.flag}></Flag>)
-    const languageQuestion = (countryToShowObject &&Object.values(countryToShowObject.language)[0])
-    const questionInfo = gameType=="Flag" ? flagQuestion : languageQuestion
+    const languageQuestion = (countryToShowObject &&<Language>{Object.values(countryToShowObject.language)[0]}</Language>)
+    const questionInfo = gameType=="Flag" ? flagQuestion : languageQuestion // shows question info dependes on the gameType
 
     const handleRefreshClick = () => {
         processRefresh()
@@ -76,10 +86,10 @@ const QuizList = ({answerOptions , processGuess, hasUserAnswered, userCorrect, p
             <CurrentScore>Current Score: {score}</CurrentScore>
             <CurrentScore>High Score: {highScore}</CurrentScore>
             </ScoreContainer>
-            {questionInfo}
+            {questionInfo} 
             { hasUserAnswered 
-                ?  <div><Answer>{userCorrect ? "You got it! Well Done!" : "Wrong! This flag belongs to " + countryToShowObject.name } </Answer>
-                <Button onClick={handleRefreshClick} >Next Flag</Button></div>
+                ?  <div><Answer>{userCorrect ? "You got it! Well Done!" : "Wrong! This "+gameType+" belongs to " + countryToShowObject.name } </Answer>
+                <Button onClick={handleRefreshClick} >Next {gameType}</Button></div>
                 : <ul>{listOfAnswerItems}</ul> }
         </div>
     )

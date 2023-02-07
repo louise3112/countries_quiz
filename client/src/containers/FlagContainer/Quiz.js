@@ -1,4 +1,4 @@
-import { randomCountries, randomIndex } from "../../helpers/usefulFunctions"
+import { randomCountries, randomIndex, getLanguageForQuestion } from "../../helpers/usefulFunctions"
 import { getAllCountries } from "../../helpers/countryDataFetches"
 import React, { useState, useEffect } from "react"
 import QuizList from "../../components/QuizList"
@@ -27,7 +27,22 @@ const Quiz = ({gameType}) => {
     // Maps over the random country array to create a new array with the data we need
     const prepAnswers = (countriesArray) => {
         const randomCountriesArray = randomCountries(countriesArray, 3) // Selects 3 random country objects and puts them in an array
-        const correctAnswerIndex = randomIndex(randomCountriesArray.length)
+        let indexOfLanguage = -1
+        if(gameType == "Language") {
+            const languageInSingleCountry = getLanguageForQuestion(randomCountriesArray)
+            if(!languageInSingleCountry) {
+                // All options have repeated langauges
+                processRefresh()
+            }
+            
+            for(let i=0; i< randomCountriesArray.length; i++) {
+                if(languageInSingleCountry[1][0].name == randomCountriesArray[i].name) {
+                    indexOfLanguage = i
+                    break;
+                }
+            }
+        }
+        const correctAnswerIndex = (gameType=="Flag")?randomIndex(randomCountriesArray.length):indexOfLanguage
         const answersList = randomCountriesArray.map((country, index) => {
             return {
                 ...country,
