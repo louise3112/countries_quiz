@@ -34,7 +34,6 @@ const PopGameList = ({countries, processAnswer, gameOver, gameWon, newGame}) => 
     const listOfPopGameItems = countries.map(country => {
         if (country.status === "none") {
             return <CardsBack className='PlayingCard' src={PlayingCard} alt='Playing Card' key={country._id}></CardsBack> 
-            // return <MysteryCard key={country._id}>?</ MysteryCard>
         } else {
             return <PopGameItem key={country._id} country={country} processAnswer={processAnswer}/>
         }
