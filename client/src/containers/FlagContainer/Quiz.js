@@ -27,16 +27,16 @@ const Quiz = ({gameType}) => {
     // Maps over the random country array to create a new array with the data we need
     const prepAnswers = (countriesArray) => {
         const randomCountriesArray = randomCountries(countriesArray, 3) // Selects 3 random country objects and puts them in an array
-        let indexOfLanguage = -1
+        let indexOfLanguage = -1 // undefined  // Because any number 0 or more could be an array index
         if(gameType == "Language") {
-            const languageInSingleCountry = getLanguageForQuestion(randomCountriesArray)
+            const languageInSingleCountry = getLanguageForQuestion(randomCountriesArray) // ["English", [{countryObj.name}]]
             if(!languageInSingleCountry) {
                 // All options have repeated langauges
                 processRefresh()
             }
             
             for(let i=0; i< randomCountriesArray.length; i++) {
-                if(languageInSingleCountry[1][0].name == randomCountriesArray[i].name) {
+                if(languageInSingleCountry[1][0].name == randomCountriesArray[i].name) { 
                     indexOfLanguage = i
                     break;
                 }
