@@ -51,34 +51,34 @@ const Games = () => {
 
     return (
         <div className="Games-container">
-        <GamesGrid className="Games-list">
-            <Box>
-            <NavLink to="/FlagQuiz">
-            <Images className='Flags' src={Flags} alt='Flags'/>
-            <GamesItems>Flag Quiz</GamesItems>
-            </NavLink>
-            </Box>
-            <Box>
-            <NavLink to="/CountriesQuiz">
-            <Images className='City' src={City} alt='City'/> 
-            <GamesItems>Countries Quiz</GamesItems>
-            </NavLink>
-            </Box> 
-            <Box>
-            <NavLink to="/PopulationQuiz">
-            <Images className='Population' src={Population} alt='Population'/> 
-            <GamesItems>Population Quiz</GamesItems>
-            </NavLink>
-            </Box>  
-            <Box>  
-            <NavLink to="/LocationQuiz">
-            <Images className='Compass' src={Compass} alt='Compass'/> 
-            <GamesItems>Country Location Quiz</GamesItems>
-            </NavLink>
-            </Box>  
-        </GamesGrid>
-        <footer>
-        </footer>
+            <GamesGrid className="Games-list">
+                <NavLink to="/FlagQuiz">
+                    <Box>
+                        <Images className='Flags' src={Flags} alt='Flags' />
+                        <GamesItems>Flag Quiz</GamesItems>
+                    </Box>
+                </NavLink>
+                <NavLink to="/CountriesQuiz">
+                    <Box>
+                        <Images className='City' src={City} alt='City' />
+                        <GamesItems>Countries Quiz</GamesItems>
+                    </Box>
+                </NavLink>
+                <NavLink to="/PopulationQuiz">
+                    <Box>
+                        <Images className='Population' src={Population} alt='Population' />
+                        <GamesItems>Population Quiz</GamesItems>
+                    </Box>
+                </NavLink>
+                <NavLink to="/LocationQuiz">
+                    <Box>
+                        <Images className='Compass' src={Compass} alt='Compass' />
+                        <GamesItems>Country Location Quiz</GamesItems>
+                    </Box>
+                </NavLink>
+            </GamesGrid>
+            <footer>
+            </footer>
         </div>
     )
 }

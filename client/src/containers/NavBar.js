@@ -60,7 +60,7 @@ const NavBar = () => {
 
     return (
         <>
-        <img className='Logo' src={Logo} alt='Logo'/> 
+        <NavLink to="/"><img className='Logo' src={Logo} alt='Logo'/></NavLink> 
         <NavBarStyle>
         <header>
             <NavBarLayout>
