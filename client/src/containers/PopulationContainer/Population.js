@@ -16,7 +16,7 @@ const Header = styled.h2`
 const Paragraph = styled.p`
     text-align: center;
     font-family: 'Oswald', sans-serif;
-    font-size: 18px; 
+    font-size: 1.25em; 
     width: 40%; 
     align-items: center;
     margin: 0 auto;
@@ -163,10 +163,18 @@ const PopulationQuiz = ({user, updateScores}) => {
                 {user.popGame && <Scores>Games Played: {user.popGame.played}</Scores>}
                 {user.popGame && <Scores>Games Won: {user.popGame.won}</Scores>}
             </ScoreContainer> 
-            <Paragraph>Decide whether the population for the country revealed is 'Higher' or 'Lower' than the population of the previous country and select the relevant button! </Paragraph>
+            {!gameOver && <Paragraph>Decide whether the population for the country revealed is 'Higher' or 'Lower' than the population of the previous country. </Paragraph>}
             <PopGameList countries={countriesToPlay} processAnswer={processAnswer} gameOver={gameOver} gameWon={gameWon} newGame={newGame}/>
         </div>
     )
 }
 
 export default PopulationQuiz
+
+// Link to page for cross png
+// https://www.flaticon.com/free-icon/close_463612?related_id=463612&origin=pack&fbclid=IwAR23yaC_Ml-oMjs9i-Ir85FldUFSnClU4MNb1fj995onbT3ebNBqscbMsZE
+
+
+// Link to page for tick png
+// hhttps://www.flaticon.com/free-icon/check_463574?term=tick&page=1&position=30&origin=search&related_id=463574&fbclid=IwAR0ooWBTNftJobZvvv0NgtzdxX23Ue8E1L45P-alcVmsvv6Yq177VVkWArY
+

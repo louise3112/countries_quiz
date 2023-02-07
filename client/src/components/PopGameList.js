@@ -6,10 +6,11 @@ const ListOfCountryCards = styled.ul`
     list-style: none;
     display: flex;
     justify-content: space-evenly;
+    column-gap: 0.5em;
 `
 const GameResult = styled.p`
-    font-size: 3em;
-    font-weight: bolder;
+    font-size: 1.5em;
+    font-weight: bold;
     text-align: center;
     margin-top: 0; 
 `
@@ -22,13 +23,13 @@ const PlayAgainButton = styled.button`
     align-items: center; 
     background-color: #F3DC65;
     color: black;
-    padding: 10px;
+    padding: 0;
     border-radius: 4px;
     position: relative; 
     align-items: center; 
     width: 16em; 
-    height: 4em; 
-    font-size: 14px;
+    height: 3em; 
+    font-size: 1.25em;
     font-weight: bold; 
 `
 const Container = styled.div`
@@ -36,7 +37,6 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 4px; 
 `
 
 const PopGameList = ({countries, processAnswer, gameOver, gameWon, newGame}) => {
@@ -55,7 +55,7 @@ const PopGameList = ({countries, processAnswer, gameOver, gameWon, newGame}) => 
 
     return (
         <Container>
-            {gameOver && <GameResult>{gameWon ? "\u2705 You Win!! \u2705" : "\u274C You lose... \u274C" }</GameResult> }
+            {gameOver && <GameResult>{gameWon ? "You win! Well done!" : "You lose... Better luck next time!" }</GameResult> }
             {gameOver && <PlayAgainButton onClick={handleClick}>Play again?</PlayAgainButton>}
             <ListOfCountryCards>
                 {listOfPopGameItems}
