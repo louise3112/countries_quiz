@@ -102,8 +102,6 @@ const PopulationQuiz = ({user, updateScores}) => {
             updatedCountries[country.cardPosition].guessCorrect = false
         }
 
-        console.log(gameWon)
-
         if (country.cardPosition === countriesToPlay.length - 1) {
             setGameOver(true)
             setGameWon(updatedCountries[country.cardPosition].guessCorrect)
@@ -113,9 +111,6 @@ const PopulationQuiz = ({user, updateScores}) => {
             updatedCountries[country.cardPosition + 1].status = "current"
         }
 
-        console.log(gameWon)
-
-        updateAUser(user._id, updateUser()) // Not working here when winning - likely due to timing issue? Need to move this to run as a .then? But need to avoid running when game is not over??
         setCountriesToPlay(updatedCountries)
     }
 
@@ -159,15 +154,17 @@ const PopulationQuiz = ({user, updateScores}) => {
         getData()
     }, [user])
 
+    {gameOver && updateAUser(user._id, updateUser())}
+
     return (
         <div>
             <Header>Play Your Population Right!</Header>
             <ScoreContainer>
-              {user.popGame && <Scores>Games Played: {user.popGame.played}</Scores>}
-              {user.popGame && <Scores>Games Won: {user.popGame.won}</Scores>}
+                {user.popGame && <Scores>Games Played: {user.popGame.played}</Scores>}
+                {user.popGame && <Scores>Games Won: {user.popGame.won}</Scores>}
             </ScoreContainer> 
             <Paragraph>Decide whether the population for the country revealed is 'Higher' or 'Lower' than the population of the previous country and select the relevant button! </Paragraph>
-            <PopGameList countries={countriesToPlay} processAnswer={processAnswer} gameOver={gameOver} gameWon={gameWon} newGame={newGame} />
+            <PopGameList countries={countriesToPlay} processAnswer={processAnswer} gameOver={gameOver} gameWon={gameWon} newGame={newGame}/>
         </div>
     )
 }

@@ -17,30 +17,27 @@ const CardsBack = styled.img`
     width:220px;
 `
 const PlayAgainButton = styled.button`
-cursor: pointer; 
-justify-content: center; 
-align-items: center; 
-background-color: #F3DC65;
-color: black;
-padding: 10px;
-border-radius: 4px;
-position: relative; 
-align-items: center; 
-width: 16em; 
-height: 4em; 
-font-size: 14px;
-font-weight: bold; 
+    cursor: pointer; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: #F3DC65;
+    color: black;
+    padding: 10px;
+    border-radius: 4px;
+    position: relative; 
+    align-items: center; 
+    width: 16em; 
+    height: 4em; 
+    font-size: 14px;
+    font-weight: bold; 
 `
 const Container = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-margin-top: 4px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px; 
 `
-
-
-
 
 const PopGameList = ({countries, processAnswer, gameOver, gameWon, newGame}) => {
 

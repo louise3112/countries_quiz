@@ -1,5 +1,5 @@
+import { updateAUser } from "../helpers/statsDataFetches"
 import styled from "styled-components"
-
 
 const FlagPic = styled.img`
     align-items: center; 
