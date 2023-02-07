@@ -13,6 +13,34 @@ border: solid lightgrey;
 const Answer = styled.p`
 text-align: center;
 `
+const CurrentScore = styled.h2`
+left: 1em; 
+text-align: center; 
+margin-top: 0em;
+color: #ffff; 
+text-shadow: 2px 2px 0px  #000, -2px -2px 0px  #000, 2px -2px 0px  #000, -2px 2px 0px  #000;
+`
+const ScoreContainer = styled.div`
+display: flex;
+justify-content: flex-end;
+background-color: #5F898A;
+align-items: center;
+width: 15em;
+margin: 0 auto;
+position: absolute;
+right: 1em;
+top: 10em;
+height: 12em;
+text-align: center;
+flex-direction: column;
+justify-content: center;
+justify-items: center;
+border-radius: 12px; 
+box-shadow: 0 6px 10px #4B5452;
+`
+const Button = styled.button`
+
+`
 
 const FlagsQuizList = ({answerOptions , processGuess, hasUserAnswered, userCorrect, processRefresh, score, highScore}) => {
 
@@ -29,8 +57,10 @@ const FlagsQuizList = ({answerOptions , processGuess, hasUserAnswered, userCorre
 
     return (
         <div>
-            <h2>Current Score: {score}</h2>
-            <h2>High Score: {highScore}</h2>
+            <ScoreContainer>
+            <CurrentScore>Current Score: {score}</CurrentScore>
+            <CurrentScore>High Score: {highScore}</CurrentScore>
+            </ScoreContainer>
             {flagToShowObject &&<Flag src={flagToShowObject.flag}></Flag>}
             { hasUserAnswered 
                 ?  <div><Answer>{userCorrect ? "You got it! Well Done!" : "Wrong! This flag belongs to " + flagToShowObject.name } </Answer>

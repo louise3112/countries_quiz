@@ -1,5 +1,6 @@
 import styled from "styled-components"
 
+
 const FlagPic = styled.img`
     border: solid grey 1px;
     position: relative;
@@ -20,9 +21,16 @@ const Item = styled.div`
     top: 0.5em;
 `
 
-const AnswerButton = styled.button`
+const HigherButton = styled.button`
     margin-left: 2em;
-    background-color: rgb(155, 162, 31);
+    background-color: #5F898A;
+    color: black;
+    padding: 10px 25px;
+    border-radius: 4px;
+`
+const LowerButton = styled.button`
+    margin-left: 2em;
+    background-color: #5F898A;
     color: black;
     padding: 10px 25px;
     border-radius: 4px;
@@ -36,13 +44,13 @@ const PopGameItem = ({country, processAnswer}) => {
 
     return (
         <Item>
-            {country.status === "current" && <AnswerButton onClick={handleClick} value="higher">HIGHER</AnswerButton>}
+            {country.status === "current" && <HigherButton onClick={handleClick} value="higher">HIGHER</HigherButton>}
             <div className="country-card">
                 <h4>{country.name}</h4>
                 <FlagPic src={country.flag} alt={"Flag for " + country.name} height={"100em"} width={"150em"}/>
                 <p><b>Population:</b> {country.status === "current" ? "????" : country.population.toLocaleString()}</p>
             </div>
-            {country.status === "current" && <AnswerButton onClick={handleClick} value="lower">LOWER</AnswerButton>}
+            {country.status === "current" && <LowerButton onClick={handleClick} value="lower">LOWER</LowerButton>}
             {country.guessCorrect && <Answer>&#9989;</Answer>}
             {country.guessCorrect === false && <Answer>&#10060;</Answer>}
         </Item>

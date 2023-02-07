@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { randomCountries } from "../../helpers/usefulFunctions"
 import { getAllCountries } from "../../helpers/countryDataFetches"
+import '../../App.js'
 
 import PopGameList from "../../components/PopGameList"
 
