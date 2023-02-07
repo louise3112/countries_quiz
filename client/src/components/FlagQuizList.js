@@ -14,9 +14,13 @@ const Answer = styled.p`
 text-align: center;
 `
 
-const FlagsQuizList = ({answerOptions , processGuess, hasUserAnswered, userCorrect}) => {
+const FlagsQuizList = ({answerOptions , processGuess, hasUserAnswered, userCorrect, processRefresh, score, highScore}) => {
 
     const flagToShowObject = answerOptions.find(option => option.isCorrect)
+
+    const handleRefreshClick = () => {
+        processRefresh()
+    }
 
     const listOfAnswerItems = answerOptions.map(answer => {
         return <FlagsQuizItem key={answer._id} answer={answer} processGuess={processGuess} />
@@ -25,9 +29,12 @@ const FlagsQuizList = ({answerOptions , processGuess, hasUserAnswered, userCorre
 
     return (
         <div>
+            <h2>Current Score: {score}</h2>
+            <h2>High Score: {highScore}</h2>
             {flagToShowObject &&<Flag src={flagToShowObject.flag}></Flag>}
             { hasUserAnswered 
-                ?  <Answer>{userCorrect ? "you're right" : "you're wrong"} </Answer>
+                ?  <div><Answer>{userCorrect ? "You got it! Well Done!" : "Wrong! This flag belongs to " + flagToShowObject.name } </Answer>
+                <button onClick={handleRefreshClick} >Next Flag</button></div>
                 : <ul>{listOfAnswerItems}</ul> }
         </div>
     )
