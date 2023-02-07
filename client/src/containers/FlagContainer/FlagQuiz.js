@@ -9,9 +9,7 @@ const FlagsQuiz = () => {
 
     // Maps over the random country array to create a new array with the data we need
     const prepAnswers = (countriesArray) => {
-        console.log(countriesArray)
         const randomCountriesArray = randomCountries(countriesArray, 3) // Selects 3 random country objects and puts them in an array
-        console.log(randomCountriesArray)
         const correctAnswerIndex = randomIndex(randomCountriesArray.length)
         const answersList = randomCountriesArray.map((country, index) => {
             return {
@@ -25,10 +23,26 @@ const FlagsQuiz = () => {
 
     const [userCorrect, setUserCorrect] = useState(false)
     const [hasUserAnswered, sethasUserAnswered] = useState(false)
+    const [score, setScore] = useState(0)
+    const [highScore, setHighScore] = useState(0)
 
     const processGuess = (result) => {
+        setScore(result ? score + 1 : 0)
+        if (result && score + 1 > highScore) {
+            setHighScore(score + 1)
+          }
         setUserCorrect(result)
         sethasUserAnswered(true)
+    }
+
+    const processRefresh = () => {
+        getAllCountries()
+            .then(allCountries => {
+            const selectedAnswers = prepAnswers(allCountries)
+            setAnswerOptions(selectedAnswers)
+            setUserCorrect(false)
+            sethasUserAnswered(false)
+    })
     }
 
     useEffect(() => {
@@ -41,9 +55,11 @@ const FlagsQuiz = () => {
 
     return (
         <div>
-            <h1>BLAH BLAH</h1>
+            <h1>Flag Quiz</h1>
             <FlagsQuizList answerOptions={answerOptions} processGuess={processGuess}
-            hasUserAnswered={hasUserAnswered} userCorrect={userCorrect}  />
+            hasUserAnswered={hasUserAnswered} userCorrect={userCorrect} 
+            processRefresh={processRefresh} score={score} 
+            highScore={highScore} />
         </div>
     )
 
@@ -51,45 +67,3 @@ const FlagsQuiz = () => {
 
 
 export default FlagsQuiz
-
-
-
-
-
-
-
-
-
-    // return (
-    //     correctAnswer ? 
-    //         <img src={correctAnswer.flag} alt={correctAnswer.name} />
-    //     : 
-    //         <div>Loading...</div>
-    // )
-
-    //   return (
-    //     <div>
-    //       {hasUserAnswered ? (
-    //         <div>
-    //           <img src={correctAnswer.flag} alt={correctAnswer.name} />
-    //           {userAnswer === correctAnswer.name ? (
-    //             <div>Well Done!</div>
-    //           ) : (
-    //             <div>Unlucky! The correct answer is {correctAnswer.name}</div>
-    //           )}
-    //         </div>
-    //       ) : (
-    //         <div>
-    //           <img src={correctAnswer.flag} alt={correctAnswer.name} />
-    //           {answerOptions.map((option) => (
-    //             <button
-    //               key={option.name}
-    //               onClick={() => handleOptionClick(option.name)}
-    //             >
-    //               {option.name}
-    //             </button>
-    //           ))}
-    //         </div>
-    //       )}
-    //     </div>
-    //   )
