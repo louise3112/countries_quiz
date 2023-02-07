@@ -38,7 +38,6 @@ const PopGameItem = ({country, processAnswer}) => {
     return (
         <Item>
             {country.status === "current" && <AnswerButton onClick={handleClick} value="higher">HIGHER</AnswerButton>}
-            {country.status === "current" && <button onClick={handleClick} value="higher">HIGHER</button>}
             <div className="country-card">
                 <h4>{country.name}</h4>
                 <FlagPic src={country.flag} alt={"Flag for " + country.name} height={"100em"} width={"150em"}/>
