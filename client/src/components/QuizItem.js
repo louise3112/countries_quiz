@@ -19,7 +19,7 @@ font-size: 14px;
 font-family: 'Oswald', sans-serif;
 `
 
-const FlagsQuizItem = ({answer , processGuess}) => {
+const QuizItem = ({answer , processGuess}) => {
     
     const handleOptionClick = () => {
             processGuess(answer.isCorrect)
@@ -33,4 +33,4 @@ const FlagsQuizItem = ({answer , processGuess}) => {
     )
 }
 
-export default FlagsQuizItem
+export default QuizItem

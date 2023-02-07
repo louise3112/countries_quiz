@@ -1,7 +1,7 @@
 import { randomCountries, randomIndex } from "../../helpers/usefulFunctions"
 import { getAllCountries } from "../../helpers/countryDataFetches"
 import React, { useState, useEffect } from "react"
-import FlagsQuizList from "../../components/FlagQuizList"
+import QuizList from "../../components/QuizList"
 import styled from "styled-components"
 import '../../App.js'
 
@@ -21,8 +21,7 @@ margin-top: 10px;
 margin-bottom: 6px; 
 `
 
-const FlagsQuiz = () => {
-
+const Quiz = ({gameType}) => {
     const [answerOptions, setAnswerOptions] = useState([])
 
     // Maps over the random country array to create a new array with the data we need
@@ -74,16 +73,16 @@ const FlagsQuiz = () => {
 
     return (
         <div>
-            <Header>Flag Quiz</Header>
-            <Text>Guess what countries flag this is. Choose from one of the three options below.</Text>
-            <FlagsQuizList answerOptions={answerOptions} processGuess={processGuess}
+            <Header>{gameType} Quiz</Header>
+            <Text>Guess what country's {gameType.toLowerCase()} this is. Choose from one of the three options below.</Text>
+            <QuizList answerOptions={answerOptions} processGuess={processGuess}
                 hasUserAnswered={hasUserAnswered} userCorrect={userCorrect}
                 processRefresh={processRefresh} score={score}
-                highScore={highScore} />
+                highScore={highScore} gameType={gameType}/>
         </div>
     )
 
 }
 
 
-export default FlagsQuiz
+export default Quiz

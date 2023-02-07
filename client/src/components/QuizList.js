@@ -1,5 +1,5 @@
 import React, { useState , useEffect } from "react"
-import FlagsQuizItem from "./FlagQuizItem"
+import QuizItem from "./QuizItem"
 import styled from "styled-components"
 
 const Flag = styled.img`
@@ -53,16 +53,20 @@ font-size: 14px;
 font-family: 'Oswald', sans-serif;
 `
 
-const FlagsQuizList = ({answerOptions , processGuess, hasUserAnswered, userCorrect, processRefresh, score, highScore}) => {
+const QuizList = ({answerOptions , processGuess, hasUserAnswered, userCorrect, processRefresh, score, highScore, gameType}) => {
 
-    const flagToShowObject = answerOptions.find(option => option.isCorrect)
+    const countryToShowObject = answerOptions.find(option => option.isCorrect)
+
+    const flagQuestion = (countryToShowObject &&<Flag src={countryToShowObject.flag}></Flag>)
+    const languageQuestion = (countryToShowObject &&Object.values(countryToShowObject.language)[0])
+    const questionInfo = gameType=="Flag" ? flagQuestion : languageQuestion
 
     const handleRefreshClick = () => {
         processRefresh()
     }
 
     const listOfAnswerItems = answerOptions.map(answer => {
-        return <FlagsQuizItem key={answer._id} answer={answer} processGuess={processGuess} />
+        return <QuizItem key={answer._id} answer={answer} processGuess={processGuess} />
     })
 
 
@@ -72,13 +76,13 @@ const FlagsQuizList = ({answerOptions , processGuess, hasUserAnswered, userCorre
             <CurrentScore>Current Score: {score}</CurrentScore>
             <CurrentScore>High Score: {highScore}</CurrentScore>
             </ScoreContainer>
-            {flagToShowObject &&<Flag src={flagToShowObject.flag}></Flag>}
+            {questionInfo}
             { hasUserAnswered 
-                ?  <div><Answer>{userCorrect ? "You got it! Well Done!" : "Wrong! This flag belongs to " + flagToShowObject.name } </Answer>
+                ?  <div><Answer>{userCorrect ? "You got it! Well Done!" : "Wrong! This flag belongs to " + countryToShowObject.name } </Answer>
                 <Button onClick={handleRefreshClick} >Next Flag</Button></div>
                 : <ul>{listOfAnswerItems}</ul> }
         </div>
     )
 }
 
-export default FlagsQuizList
+export default QuizList
