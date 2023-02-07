@@ -17,7 +17,6 @@ const FlagsQuiz = () => {
                 isCorrect : index === correctAnswerIndex
             }}
         )
-        console.log(answersList)
         return answersList
     }
 
