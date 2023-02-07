@@ -9,6 +9,7 @@ const Text = styled.h3`
 text-align: center;
 margin: 0;
 margin-bottom: 1em; 
+padding: 15px; 
 `
 
 const Header = styled.h1`
@@ -16,7 +17,8 @@ position: relative;
 text-align: center;
 font-family: 'Oswald', sans-serif;
 font-size: 2.5em;
-
+margin-top: 10px; 
+margin-bottom: 6px; 
 `
 
 const FlagsQuiz = () => {

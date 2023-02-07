@@ -9,6 +9,7 @@ display: block;
 margin-left: auto;
 margin-right: auto;
 border: solid lightgrey;
+margin-bottom: 30px; 
 `
 const Answer = styled.p`
 text-align: center;
@@ -16,7 +17,7 @@ text-align: center;
 const CurrentScore = styled.h2`
 left: 1em; 
 text-align: center; 
-margin-top: 0em;
+margin: 5px; 
 color: #ffff; 
 text-shadow: 2px 2px 0px  #000, -2px -2px 0px  #000, 2px -2px 0px  #000, -2px 2px 0px  #000;
 `
@@ -28,9 +29,9 @@ align-items: center;
 width: 15em;
 margin: 0 auto;
 position: absolute;
-right: 1em;
-top: 10em;
-height: 12em;
+right: 2em;
+top: 9em;
+height: 7em;
 text-align: center;
 flex-direction: column;
 justify-content: center;
@@ -39,7 +40,17 @@ border-radius: 12px;
 box-shadow: 0 6px 10px #4B5452;
 `
 const Button = styled.button`
-
+cursor: pointer; 
+height: 4em;
+width: 20em;
+display: block;
+margin-left: auto; 
+margin-right: auto;
+background-color: #F3DC65;
+border-radius: 6px;
+font-weight: bold;
+font-size: 14px; 
+font-family: 'Oswald', sans-serif;
 `
 
 const FlagsQuizList = ({answerOptions , processGuess, hasUserAnswered, userCorrect, processRefresh, score, highScore}) => {
@@ -64,7 +75,7 @@ const FlagsQuizList = ({answerOptions , processGuess, hasUserAnswered, userCorre
             {flagToShowObject &&<Flag src={flagToShowObject.flag}></Flag>}
             { hasUserAnswered 
                 ?  <div><Answer>{userCorrect ? "You got it! Well Done!" : "Wrong! This flag belongs to " + flagToShowObject.name } </Answer>
-                <button onClick={handleRefreshClick} >Next Flag</button></div>
+                <Button onClick={handleRefreshClick} >Next Flag</Button></div>
                 : <ul>{listOfAnswerItems}</ul> }
         </div>
     )
