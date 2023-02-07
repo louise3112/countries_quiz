@@ -1,6 +1,5 @@
 import '../GamesContainer/Games.js'
 import styled from "styled-components"
-import Globe from '../images/Globe.jpg'
 import City from '../images/cityscape.jpg'
 import Flags from '../images/flags.jpg'
 import Population from '../images/Population.jpeg'
@@ -44,6 +43,9 @@ const Box = styled.div`
     border-radius: 10px;
     box-shadow: 0 6px 10px #4B5452;
 `
+const NavLink = styled(Link)`
+text-decoration: none;
+`
 
 const Games = () => {
 
@@ -51,28 +53,28 @@ const Games = () => {
         <div className="Games-container">
         <GamesGrid className="Games-list">
             <Box>
-            <Link to="/FlagQuiz">
+            <NavLink to="/FlagQuiz">
             <Images className='Flags' src={Flags} alt='Flags'/>
             <GamesItems>Flag Quiz</GamesItems>
-            </Link>
+            </NavLink>
             </Box>
             <Box>
-            <Link to="/CountriesQuiz">
+            <NavLink to="/CountriesQuiz">
             <Images className='City' src={City} alt='City'/> 
             <GamesItems>Countries Quiz</GamesItems>
-            </Link>
+            </NavLink>
             </Box> 
             <Box>
-            <Link to="/PopulationQuiz">
+            <NavLink to="/PopulationQuiz">
             <Images className='Population' src={Population} alt='Population'/> 
             <GamesItems>Population Quiz</GamesItems>
-            </Link>
+            </NavLink>
             </Box>  
             <Box>  
-            <Link to="/LocationQuiz">
+            <NavLink to="/LocationQuiz">
             <Images className='Compass' src={Compass} alt='Compass'/> 
             <GamesItems>Country Location Quiz</GamesItems>
-            </Link>
+            </NavLink>
             </Box>  
         </GamesGrid>
         <footer>
