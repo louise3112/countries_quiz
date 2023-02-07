@@ -21,19 +21,18 @@ const CountriesQuiz = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        setIsCorrect(userGuess === country.capital);
+        setIsCorrect(userGuess === country.name);
     };
 
 
     return (
         <form onSubmit={handleSubmit}>
             <h4>
-                <p>Country: {country.name}</p>
-                <p>What is the capital of {country.name}?</p>
+                <p>{country.capital} is the capital of which country?</p>
                 <input type="text" value={userGuess} onChange={handleGuess} />
                 <button type="submit">Submit</button>
                 {isCorrect ? <p>Correct!</p>
-                    : <p>Incorrect. The correct answer is: {country.capital}</p>}
+                    : <p>Incorrect. The correct answer is: {country.name}</p>}
             </h4>
         </form>
     );

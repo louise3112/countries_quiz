@@ -51,6 +51,7 @@ color: #fff;
 position: absolute;
 top: 60px;
 left: 0;
+z-index: 1;
 `;
 
 const NavBar = () => {
