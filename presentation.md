@@ -34,7 +34,7 @@ Louise
 Johnathan
 - Talk about capital quiz briefly
 
-## Slide 4 - Further Extensions
+## Slide 4 - Further Extensions (Gareth)
 - Talking Points: Stats page, what can I improve on etc
 - Login and authentication
 - Filter by continent/region for games
@@ -42,7 +42,7 @@ Johnathan
 
 Slide Content: High level bullet points
 
-## Slide 5 - Challenges and Lessons Learned
+## Slide 5 - Challenges and Lessons Learned (Louise)
 Talking Points:
 - github
 - group work in general
