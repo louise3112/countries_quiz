@@ -54,6 +54,7 @@ const Scores = styled.h2`
 
 const PopulationQuiz = ({user, updateScores}) => {
 
+
     const [countriesToPlay, setCountriesToPlay] = useState([])
     const [gameOver, setGameOver] = useState(false)
     const [gameWon, setGameWon] = useState(false)
@@ -61,12 +62,12 @@ const PopulationQuiz = ({user, updateScores}) => {
 
     const updateUser = () => {
         // Update user state and DB values with scores:
-        const updatedUser = {...user}
-        const newStats = {...updatedUser.popGame}
+        const updatedUser = { ...user }
+        const newStats = { ...updatedUser.popGame }
         const newGuesses = [...newStats.correctGuesses]
         
         newStats.played += 1
-        if (gameWon) {newStats.won += 1}
+        if (gameWon) { newStats.won += 1 }
         newGuesses.push(correctGuessCount)
         
         newStats.correctGuesses = newGuesses

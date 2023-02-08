@@ -4,3 +4,7 @@
 p {
     font-family: 'Oswald', sans-serif;
 }
+
+.main-content {
+    min-height: calc(100vh - 70px); /* subtract height of footer from viewport height */
+}

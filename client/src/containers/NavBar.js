@@ -11,7 +11,7 @@ list-style: none;
 padding: 1em;
 margin: 0;
 background-color: #3c7f61;
-height: 6em;
+height: 5em;
 font-weight: bold;
 text-decoration: none;
 color: #3c7f61;
@@ -33,7 +33,7 @@ background-color: #3c7f61;
 color: #BECE3A;
 }
 left: 10%; 
-width: 8em;
+width: 40%;
 display: inline;
 top: 2rem;
 padding: 1.8em;
@@ -52,7 +52,7 @@ position: absolute;
 top: 60px;
 left: 0;
 z-index: 1;
-`;
+`
 
 const NavBar = () => {
 
@@ -79,18 +79,6 @@ const NavBar = () => {
             <NavBarLayout>
                 <NavLink to="/CountriesFacts">Countries Facts</NavLink>
             </NavBarLayout>
-            {/* <NavBarLayout>
-                <NavLink to="/FlagQuiz">Flag Quiz</NavLink>
-            </NavBarLayout>
-            <NavBarLayout>
-                <NavLink to="/CountriesQuiz">Countries Quiz</NavLink>
-            </NavBarLayout>
-            <NavBarLayout>
-                <NavLink to="/PopulationQuiz">Population Quiz</NavLink>
-            </NavBarLayout>
-            <NavBarLayout>
-                <NavLink to="/LocationQuiz">Location Quiz</NavLink>
-            </NavBarLayout> */}
         </header>
         </NavBarStyle>
         </>
