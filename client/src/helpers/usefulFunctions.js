@@ -1,3 +1,8 @@
+// Selects a random index from a given total of indexes:
+export const randomIndex = (totalOptions) => {
+    return Math.floor(Math.random() * totalOptions)
+}
+
 // Selects a random array of n countries:
 export const randomCountries = (array, n) => {
     const selected = []
@@ -41,9 +46,4 @@ export const getLanguageForQuestion = function (listOfRandomCountries) {
     else {
         return languageInSingleCountry[randomIndex(languageInSingleCountry.length)]
     }
-}
-
-// Selects a random index from a given total of indexes:
-export const randomIndex = (totalOptions) => {
-    return Math.floor(Math.random() * totalOptions)
 }

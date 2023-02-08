@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllCountries } from "../../helpers/countryDataFetches";
+import { randomCountries } from "../../helpers/usefulFunctions";
 import { updateAUser } from "../../helpers/statsDataFetches";
 import styled from "styled-components";
 import Capitals from '../images/Capitals.jpg'
@@ -30,17 +31,17 @@ const ContentContainer = styled.div`
 `;
 
 const CapitalPhoto = styled.img`
-border-top-right-radius: 10px; 
-border-top-left-radius: 10px; 
-background-color:#96bcb4;
-margin: 2em 0;
-padding: 0.9em; 
-display: block;
-margin: 0 auto;
-max-width: 100%;
+    border-top-right-radius: 10px; 
+    border-top-left-radius: 10px; 
+    background-color:#96bcb4;
+    margin: 2em 0;
+    padding: 0.9em; 
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
 `
 const Input = styled.input`
-width: 70%;
+    width: 70%;
 `
 
 const CountriesQuiz = ({user, updateScores}) => {
