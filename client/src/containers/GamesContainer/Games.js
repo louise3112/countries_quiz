@@ -70,7 +70,7 @@ const Games = () => {
                 <NavLink to="/CountriesQuiz">
                     <Box>
                         <Images className='City' src={City} alt='City' />
-                        <GamesItems>Countries Quiz</GamesItems>
+                        <GamesItems>A Question of Capitals</GamesItems>
                     </Box>
                 </NavLink>
                 <NavLink to="/PopulationQuiz">
