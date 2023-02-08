@@ -163,8 +163,8 @@ const PopulationQuiz = ({user, updateScores}) => {
         <div>
             <Header>Play Your Population Right!</Header>
             <ScoreContainer>
-              {user.popGame && <Scores>Games Played: {user.popGame.played}</Scores>}
-              {user.popGame && <Scores>Games Won: {user.popGame.won}</Scores>}
+                {user.popGame && <Scores>Games Played: {user.popGame.played}</Scores>}
+                {user.popGame && <Scores>Games Won: {user.popGame.won}</Scores>}
             </ScoreContainer> 
             <Paragraph>Decide whether the population for the country revealed is 'Higher' or 'Lower' than the population of the previous country and select the relevant button! </Paragraph>
             <PopGameList countries={countriesToPlay} processAnswer={processAnswer} gameOver={gameOver} gameWon={gameWon} newGame={newGame} />

@@ -79,6 +79,9 @@ const NavBar = () => {
             <NavBarLayout>
                 <NavLink to="/CountriesFacts">Countries Facts</NavLink>
             </NavBarLayout>
+            <NavBarLayout>
+                <NavLink to="/GameStats">Stats</NavLink>
+            </NavBarLayout>
             {/* <NavBarLayout>
                 <NavLink to="/FlagQuiz">Flag Quiz</NavLink>
             </NavBarLayout>
