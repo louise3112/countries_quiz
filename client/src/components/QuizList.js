@@ -21,11 +21,9 @@ const Language = styled.h3`
     text-align: center;
 `
 const Answer = styled.p`
-
-text-align: center;
-font-size: 1.25em;
-font-weight: bold;
-
+    text-align: center;
+    font-size: 1.25em;
+    font-weight: bold;
 `
 const CurrentScore = styled.h2`
     left: 1em; 

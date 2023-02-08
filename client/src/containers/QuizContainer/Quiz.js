@@ -28,8 +28,7 @@ const ContentContainer = styled.div`
     margin-right: auto;
     margin-bottom: 30px;
     background-color: #96bcb4;
-`;
-
+`
 const CapitalPhoto = styled.img`
     border-top-right-radius: 10px; 
     border-top-left-radius: 10px; 
@@ -43,6 +42,24 @@ const CapitalPhoto = styled.img`
 const Input = styled.input`
     width: 70%;
 `
+const Answer = styled.p`
+    text-align: center;
+    font-size: 1.25em;
+    font-weight: bold;
+`
+const Button = styled.button`
+    cursor: pointer; 
+    height: 4em;
+    width: 20em;
+    display: block;
+    margin-left: auto; 
+    margin-right: auto;
+    background-color: #F3DC65;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px; 
+    font-family: 'Oswald', sans-serif;
+`
 
 const CountriesQuiz = ({user, updateScores}) => {
     const [countries, setCountries] = useState([]);
@@ -52,27 +69,26 @@ const CountriesQuiz = ({user, updateScores}) => {
     const [isCorrect, setIsCorrect] = useState(null);
     const [formSubmitted, setFormSubmitted] = useState(false);
 
-    useEffect(() => {
-        getAllCountries().then(data => {
-            setCountries(data);
-            setFilteredCountries(data);
-            const randomIndex = Math.floor(Math.random() * data.length);
-            const selectedCountry = data[randomIndex];
-            setCountry(selectedCountry);
+    const getData = () => {
+        getAllCountries()
+            .then(allCountries => {
+                setCountries(allCountries);
+                setFilteredCountries(allCountries)
+                const selectedCountry = randomCountries(allCountries, 1);
+                setCountry(selectedCountry[0]);
         });
+    }
+
+    useEffect(() => {
+        getData()
     }, []);
 
     useEffect(() => {
         if (userGuess.length >= 2) {
-            setFilteredCountries(
-                countries.filter(
-                    country =>
-                        country.name.toLowerCase().indexOf(userGuess.toLowerCase()) !==
-                        -1
-                )
-            );
-        } else {
-            setFilteredCountries([]);
+            setFilteredCountries(countries.filter(country => {
+                return country.name.toLowerCase().indexOf(userGuess.toLowerCase()) !== -1}))
+        // } else {
+        //     setFilteredCountries([])
         }
     }, [userGuess]);
 
@@ -91,19 +107,9 @@ const CountriesQuiz = ({user, updateScores}) => {
     };
 
     const processRefresh = () => {
-        getAllCountries().then(data => {
-            setCountries(data);
-            setFilteredCountries(data);
-            const randomIndex = Math.floor(Math.random() * data.length);
-            const selectedCountry = data[randomIndex];
-            setCountry(selectedCountry);
-            setUserGuess("");
-            setFormSubmitted(false)
-        });
-    }
-
-    const handleRefreshClick = () => {
-        processRefresh()
+        getData()
+        setUserGuess("")
+        setFormSubmitted(false)
     }
 
     return (
@@ -111,15 +117,27 @@ const CountriesQuiz = ({user, updateScores}) => {
             <Header>Capitals Quiz</Header>
             <CapitalPhoto className='Capitals' src={Capitals} alt='Capitals' />
             <ContentContainer>
-                <form onSubmit={handleSubmit}>
+                <p>{country.capital} is the capital of which country?</p>
+                {formSubmitted && isCorrect 
+                    ? <p>Correct!</p>
+                    : <p> Incorrect. The correct answer is {country.name}!</p>}
+
+                {formSubmitted
+                    ? <div>
+                        <Answer> {isCorrect
+                            ? "You got it! " + country.capital + " is the capital of " + country.name + "!"
+                            : "Wrong! " + country.capital + " is the capital of " + country.name + "!"}
+                        </Answer>
+                        <Button onClick={processRefresh}>Next Capital</Button>
+                    </div>
+                    : <form>
+
+                    </form>}
+
+                {/* <form onSubmit={handleSubmit}>
                     <h4>
-                        <p>{country.capital} is the capital of which country?</p>
                         <Input type="text" value={userGuess} onChange={handleGuess} />
                         <button type="submit">Submit</button>
-                        {formSubmitted && !isCorrect && (
-                            <p>Incorrect. The correct answer is: {country.name}</p>
-                        )}
-                        {formSubmitted && isCorrect && <p>Correct!</p>}
                     </h4>
                     <div style={{ display: userGuess.length > 0 ? "block" : "none" }}>
                         {filteredCountries.map(country => (
@@ -128,11 +146,31 @@ const CountriesQuiz = ({user, updateScores}) => {
                             </p>
                         ))}
                     </div>
-                </form>
-                <button onClick={handleRefreshClick} >Next Capital</button>
+                </form> */}
             </ContentContainer>
         </Container>
     );
 };
 
 export default CountriesQuiz;
+
+
+                // {/* <form onSubmit={handleSubmit}>
+                //     <h4>
+                //         <p>{country.capital} is the capital of which country?</p>
+                //         <Input type="text" value={userGuess} onChange={handleGuess} />
+                //         <button type="submit">Submit</button>
+                //         {formSubmitted && !isCorrect && (
+                //             <p>Incorrect. The correct answer is: {country.name}</p>
+                //         )}
+                //         {formSubmitted && isCorrect && <p>Correct!</p>}
+                //     </h4>
+                //     <div style={{ display: userGuess.length > 0 ? "block" : "none" }}>
+                //         {filteredCountries.map(country => (
+                //             <p onClick={() => handleCountryClick(country.name)}>
+                //                 {country.name}
+                //             </p>
+                //         ))}
+                //     </div>
+                // </form>
+                // {formSubmitted && <button onClick={processRefresh}>Next Capital</button>} */}
