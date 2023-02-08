@@ -16,7 +16,7 @@ const Header = styled.h2`
 const Paragraph = styled.p`
     text-align: center;
     font-family: 'Oswald', sans-serif;
-    font-size: 18px; 
+    font-size: 1.25em; 
     width: 40%; 
     align-items: center;
     margin: 0 auto;
@@ -103,8 +103,6 @@ const PopulationQuiz = ({user, updateScores}) => {
             updatedCountries[country.cardPosition].guessCorrect = false
         }
 
-        console.log(gameWon)
-
         if (country.cardPosition === countriesToPlay.length - 1) {
             setGameOver(true)
             setGameWon(updatedCountries[country.cardPosition].guessCorrect)
@@ -114,9 +112,6 @@ const PopulationQuiz = ({user, updateScores}) => {
             updatedCountries[country.cardPosition + 1].status = "current"
         }
 
-        console.log(gameWon)
-
-        updateAUser(user._id, updateUser()) // Not working here when winning - likely due to timing issue? Need to move this to run as a .then? But need to avoid running when game is not over??
         setCountriesToPlay(updatedCountries)
     }
 
@@ -160,17 +155,27 @@ const PopulationQuiz = ({user, updateScores}) => {
         getData()
     }, [user])
 
+    {gameOver && updateAUser(user._id, updateUser())}
+
     return (
         <div>
             <Header>Play Your Population Right!</Header>
             <ScoreContainer>
                 {user.popGame && <Scores>Games Played: {user.popGame.played}</Scores>}
                 {user.popGame && <Scores>Games Won: {user.popGame.won}</Scores>}
-            </ScoreContainer>
-            <Paragraph>Decide whether the population for the country revealed is 'Higher' or 'Lower' than the population of the previous country and select the relevant button! </Paragraph>
-            <PopGameList countries={countriesToPlay} processAnswer={processAnswer} gameOver={gameOver} gameWon={gameWon} newGame={newGame} />
+            </ScoreContainer> 
+            {!gameOver && <Paragraph>Decide whether the population for the country revealed is 'Higher' or 'Lower' than the population of the previous country. </Paragraph>}
+            <PopGameList countries={countriesToPlay} processAnswer={processAnswer} gameOver={gameOver} gameWon={gameWon} newGame={newGame}/>
         </div>
     )
 }
 
 export default PopulationQuiz
+
+// Link to page for cross png
+// https://www.flaticon.com/free-icon/close_463612?related_id=463612&origin=pack&fbclid=IwAR23yaC_Ml-oMjs9i-Ir85FldUFSnClU4MNb1fj995onbT3ebNBqscbMsZE
+
+
+// Link to page for tick png
+// hhttps://www.flaticon.com/free-icon/check_463574?term=tick&page=1&position=30&origin=search&related_id=463574&fbclid=IwAR0ooWBTNftJobZvvv0NgtzdxX23Ue8E1L45P-alcVmsvv6Yq177VVkWArY
+

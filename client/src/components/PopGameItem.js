@@ -1,5 +1,6 @@
 import styled from "styled-components"
-
+import tick from "../containers/images/tick.png"
+import cross from "../containers/images/cross.png"
 
 const FlagPic = styled.img`
     align-items: center; 
@@ -7,11 +8,13 @@ const FlagPic = styled.img`
     position: relative;
 `
 
-const Answer = styled.p`
-    font-size: 48px;
-    font-weight: bolder;
-    margin: 0;
+const CountryCard = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `
+
 const Item = styled.div`
     border: groove #ADB5B5;
     border-radius: 20px;
@@ -64,14 +67,14 @@ const PopGameItem = ({country, processAnswer}) => {
     return (
         <Item>
             {country.status === "current" && <HigherButton onClick={handleClick} value="higher">HIGHER</HigherButton>}
-            <div className="country-card">
+            <CountryCard >
                 <CountryName>{country.name}</CountryName>
                 <FlagPic src={country.flag} alt={"Flag for " + country.name} height={"100em"} width={"150em"}/>
                 <Population><b>Population:</b> {country.status === "current" ? "????" : country.population.toLocaleString()}</Population>
-            </div>
+            </CountryCard>
             {country.status === "current" && <LowerButton onClick={handleClick} value="lower">LOWER</LowerButton>}
-            {country.guessCorrect && <Answer>&#9989;</Answer>}
-            {country.guessCorrect === false && <Answer>&#10060;</Answer>}
+            {country.guessCorrect && <img src={tick} alt="a green circle with a tick" height={"50em"} width={"50em"}/>}
+            {country.guessCorrect === false && <img src={cross} alt="a red circle with a cross" height={"50em"} width={"50em"}/>}
         </Item>
     )
 }
