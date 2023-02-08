@@ -13,8 +13,7 @@ min-height: 100vh;
 
 const Text = styled.h3`
 text-align: center;
-margin: 0;
-padding: 6px; 
+margin-bottom: 0.3em; 
 `
 
 const Header = styled.h1`
@@ -22,7 +21,7 @@ position: relative;
 text-align: center;
 font-family: 'Oswald', sans-serif;
 font-size: 2.5em;
-margin:4px;
+margin-bottom:0.3em;
 `
 
 const Quiz = ({gameType}) => {
