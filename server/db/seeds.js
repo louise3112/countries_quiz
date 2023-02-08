@@ -77,6 +77,10 @@ statsCollection.estimatedDocumentCount({})
                 Language : {
                     highStreak : 0,
                     currentStreak : 0
+                },
+                capitals : {
+                    highStreak : 0,
+                    currentStreak : 0
                 }
             }])
             .then(res => {
