@@ -4,44 +4,44 @@ import { getACountry } from "../helpers/countryDataFetches"
 import styled from "styled-components"
 
 const StyledDiv = styled.div`
-margin:10px; 
-display: flex;
-align-items: center;
-justify-content: center;
-align-content: center; 
+    margin:10px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center; 
 `;
 
 const Container = styled.div`
-display: flex; 
-flex-direction: column;
-align-items: center;
-align-content: center; 
-justify-content: center;
-border: solid lightgrey; 
-border-radius: 20px; 
-height: 31em;
-width: 35em;  
-padding: 1em; 
-background-color: #96bcb4; 
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    align-content: center; 
+    justify-content: center;
+    border: solid lightgrey; 
+    border-radius: 20px; 
+    height: 31em;
+    width: 35em;  
+    padding: 1em; 
+    background-color: #96bcb4; 
 `;
 
 const Flag = styled.img`
-margin-left: auto;
-margin-right: auto;  
-display: flex; 
-height: 6em; 
-width: auto;
-align-items: center;
-justify-content: center; 
-border: solid grey; 
+    margin-left: auto;
+    margin-right: auto;  
+    display: flex; 
+    height: 6em; 
+    width: auto;
+    align-items: center;
+    justify-content: center; 
+    border: solid grey; 
 `
 const CountryInfo = styled.div`
-text-align: center;
+    text-align: center;
 `
 const CountryInfoTitle = styled.h4`
-font-size: 1.5em;
-margin: 0.8em; 
-text-align: center;
+    font-size: 1.5em;
+    margin: 0.8em; 
+    text-align: center;
 `
 
 const Country = () => {

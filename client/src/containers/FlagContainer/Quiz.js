@@ -6,22 +6,23 @@ import styled from "styled-components"
 import '../../App.js'
 
 const Container = styled.div`
-display: flex;
-flex-direction: column;
-min-height: 100vh;
-`
-
-const Text = styled.h3`
-text-align: center;
-margin-bottom: 0.3em; 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 `
 
 const Header = styled.h1`
-position: relative;
-text-align: center;
-font-family: 'Oswald', sans-serif;
-font-size: 2.5em;
-margin-bottom:0.3em;
+    position: relative;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5em;
+    margin-top: 10px; 
+    margin-bottom:6px;
+`
+
+const Text = styled.h3`
+    text-align: center;
+    margin-bottom: 14px; 
 `
 
 const Quiz = ({gameType}) => {
