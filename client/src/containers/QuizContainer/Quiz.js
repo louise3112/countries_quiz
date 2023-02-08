@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllCountries } from "../../helpers/countryDataFetches";
+import { updateAUser } from "../../helpers/statsDataFetches";
 import styled from "styled-components";
 import Capitals from '../images/Capitals.jpg'
 
@@ -42,7 +43,7 @@ const Input = styled.input`
 width: 70%;
 `
 
-const CountriesQuiz = () => {
+const CountriesQuiz = ({user, updateScores}) => {
     const [countries, setCountries] = useState([]);
     const [filteredCountries, setFilteredCountries] = useState([]);
     const [country, setCountry] = useState({});
@@ -106,29 +107,29 @@ const CountriesQuiz = () => {
 
     return (
         <Container>
-        <Header>Capitals Quiz</Header>
-        <CapitalPhoto className='Capitals' src={Capitals} alt='Capitals' />
-        <ContentContainer>
-            <form onSubmit={handleSubmit}>
-                <h4>
-                    <p>{country.capital} is the capital of which country?</p>
-                    <Input type="text" value={userGuess} onChange={handleGuess} />
-                    <button type="submit">Submit</button>
-                    {formSubmitted && !isCorrect && (
-                        <p>Incorrect. The correct answer is: {country.name}</p>
-                    )}
-                    {formSubmitted && isCorrect && <p>Correct!</p>}
-                </h4>
-                <div style={{ display: userGuess.length > 0 ? "block" : "none" }}>
-                    {filteredCountries.map(country => (
-                        <p onClick={() => handleCountryClick(country.name)}>
-                            {country.name}
-                        </p>
-                    ))}
-                </div>
-            </form>
-            <button onClick={handleRefreshClick} >Next Capital</button>
-        </ContentContainer>
+            <Header>Capitals Quiz</Header>
+            <CapitalPhoto className='Capitals' src={Capitals} alt='Capitals' />
+            <ContentContainer>
+                <form onSubmit={handleSubmit}>
+                    <h4>
+                        <p>{country.capital} is the capital of which country?</p>
+                        <Input type="text" value={userGuess} onChange={handleGuess} />
+                        <button type="submit">Submit</button>
+                        {formSubmitted && !isCorrect && (
+                            <p>Incorrect. The correct answer is: {country.name}</p>
+                        )}
+                        {formSubmitted && isCorrect && <p>Correct!</p>}
+                    </h4>
+                    <div style={{ display: userGuess.length > 0 ? "block" : "none" }}>
+                        {filteredCountries.map(country => (
+                            <p onClick={() => handleCountryClick(country.name)}>
+                                {country.name}
+                            </p>
+                        ))}
+                    </div>
+                </form>
+                <button onClick={handleRefreshClick} >Next Capital</button>
+            </ContentContainer>
         </Container>
     );
 };

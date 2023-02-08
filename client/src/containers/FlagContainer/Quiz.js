@@ -1,5 +1,6 @@
 import { randomCountries, randomIndex, getLanguageForQuestion } from "../../helpers/usefulFunctions"
 import { getAllCountries } from "../../helpers/countryDataFetches"
+import { updateAUser } from "../../helpers/statsDataFetches"
 import React, { useState, useEffect } from "react"
 import QuizList from "../../components/QuizList"
 import styled from "styled-components"
@@ -25,8 +26,31 @@ font-size: 2.5em;
 margin:4px;
 `
 
-const Quiz = ({gameType}) => {
+const Quiz = ({gameType, user, updateScores}) => {
     const [answerOptions, setAnswerOptions] = useState([])
+    const [userCorrect, setUserCorrect] = useState(false)
+    const [hasUserAnswered, sethasUserAnswered] = useState(false)
+
+    const updateUser = (result) => {
+        const updatedUser = {...user}
+        const newStats = {...updatedUser[gameType]}
+
+        console.log(newStats)
+        console.log("current streak before update: " + newStats.currentStreak)
+
+        {result ? newStats.currentStreak += 1 : newStats.currentStreak = 0}
+        console.log("current streak after update: " + newStats.currentStreak)
+        console.log("high streak before update: " + newStats.highStreak)
+        if (result && newStats.currentStreak > newStats.highStreak) {
+            newStats.highStreak = newStats.currentStreak
+        }
+
+        console.log("current streak after update: " + newStats.currentStreak)
+        console.log("high streak after update: " + newStats.highStreak)
+
+        updatedUser[gameType] = newStats
+        return updatedUser
+    }
 
     // Maps over the random country array to create a new array with the data we need
     const prepAnswers = (countriesArray) => {
@@ -57,16 +81,8 @@ const Quiz = ({gameType}) => {
         return answersList
     }
 
-    const [userCorrect, setUserCorrect] = useState(false)
-    const [hasUserAnswered, sethasUserAnswered] = useState(false)
-    const [score, setScore] = useState(0)
-    const [highScore, setHighScore] = useState(0)
-
     const processGuess = (result) => {
-        setScore(result ? score + 1 : 0)
-        if (result && score + 1 > highScore) {
-            setHighScore(score + 1)
-        }
+        updateScores(updateUser(result))
         setUserCorrect(result)
         sethasUserAnswered(true)
     }
@@ -89,15 +105,21 @@ const Quiz = ({gameType}) => {
             })
     }, [])
 
+    // {hasUserAnswered && updateAUser(user._id, updateUser(userCorrect))}
+    {hasUserAnswered && updateAUser(user._id, user)}
 
     return (
         <Container>
             <Header>{gameType} Quiz</Header>
             <Text>Guess what country's {gameType.toLowerCase()} this is. Choose from one of the three options below.</Text>
-            <QuizList answerOptions={answerOptions} processGuess={processGuess}
-                hasUserAnswered={hasUserAnswered} userCorrect={userCorrect}
-                processRefresh={processRefresh} score={score}
-                highScore={highScore} gameType={gameType}/>
+            <QuizList 
+                answerOptions={answerOptions} 
+                processGuess={processGuess}
+                hasUserAnswered={hasUserAnswered} 
+                userCorrect={userCorrect}
+                processRefresh={processRefresh}
+                user={user}
+                gameType={gameType}/>
         </Container>
     )
 

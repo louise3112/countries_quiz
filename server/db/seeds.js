@@ -70,7 +70,11 @@ statsCollection.estimatedDocumentCount({})
                     won : 0,
                     correctGuesses : []
                 },
-                flagQuiz : {
+                Flag : {
+                    highStreak : 0,
+                    currentStreak : 0
+                },
+                Language : {
                     highStreak : 0,
                     currentStreak : 0
                 }

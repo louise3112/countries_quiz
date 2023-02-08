@@ -1,6 +1,4 @@
-import React, { useState , useEffect } from "react"
 import styled from "styled-components"
-
 
 const Answers = styled.li`
 list-style: none; 
@@ -25,11 +23,10 @@ const QuizItem = ({answer , processGuess}) => {
             processGuess(answer.isCorrect)
     }
 
-
     return (
         <Answers>
-        <Button onClick={handleOptionClick} >{answer.name}</Button>
-      </Answers>
+            <Button onClick={handleOptionClick} >{answer.name}</Button>
+        </Answers>
     )
 }
 

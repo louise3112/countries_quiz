@@ -51,8 +51,8 @@ function App() {
                     <Route path="/" element={<Games />} />
                     <Route path="/CountriesFacts" element={<Continents />} />
                     <Route path="/CountriesFacts/:id" element={<Country />} />
-                    <Route path="/FlagQuiz" element={<Quiz gameType="Flag"/>} />
-                    <Route path="/LanguageQuiz" element={<Quiz gameType="Language" />} />
+                    <Route path="/FlagQuiz" element={<Quiz gameType="Flag" user={user} updateScores={updateScores}/>} />
+                    <Route path="/LanguageQuiz" element={<Quiz gameType="Language" user={user} updateScores={updateScores}/>} />
                     <Route path="/CountriesQuiz" element={<CountriesQuiz />} />
                     <Route path="/PopulationQuiz" element={<PopulationQuiz user={user} updateScores={updateScores}/>} />
                     <Route path="/LocationQuiz" element={<LocationQuiz />} />                    
