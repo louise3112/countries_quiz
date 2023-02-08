@@ -3,8 +3,11 @@ import styled from "styled-components"
 
 const Header = styled.h4`
     font-size: 2em;
-    margin-left: 1.2em;
+    margin-left: 3.8em;
     margin-bottom: 0;
+`
+const UnorderedList = styled.ul`
+    margin:0; 
 `
 
 const ContinentsList = ({allContinents, allCountries}) => {
