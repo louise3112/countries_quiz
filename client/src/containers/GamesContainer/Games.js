@@ -7,21 +7,15 @@ import Languages from '../images/Languages.jpeg'
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
-    margin: 0;
     display: flex;
-    flex-direction: column;
-    min-height: 100vh; 
+    justify-content: center;
+    margin-bottom: 15em;
 `
 
 const GamesGrid = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: center;
-    position: relative;
-    top: 5rem;
-    margin-left: 10px;
-    margin-right: 10px;
+    column-gap: 1em;
 `
 const GamesItems = styled.li`
     background-color: #5F898A;
@@ -60,7 +54,7 @@ const Games = () => {
     return (
         <>
         <Container>
-            <GamesGrid className="Games-list">
+            <GamesGrid>
                 <NavLink to="/FlagQuiz">
                     <Box>
                         <Images className='Flags' src={Flags} alt='Flags' />
@@ -87,9 +81,6 @@ const Games = () => {
                 </NavLink>
             </GamesGrid>
         </Container>
-    {/* <div>
-    <Footer />
-    </div> */}
     </>
     )
 }

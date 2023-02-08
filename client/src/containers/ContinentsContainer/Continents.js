@@ -7,7 +7,14 @@ import styled from "styled-components"
 const Container = styled.div`
     display: flex;
     flex-direction:column;
+    justify-content: flex-start;
+    align-items: center;
+    row-gap: 1.5em;
     min-height: 100vh;
+`
+const Header = styled.h4`
+    font-size: 2em;
+    margin: 0.5em 0em 0em 1em;
 `
 
 const Continents = () => {
@@ -40,6 +47,7 @@ const Continents = () => {
 
     return (
         <Container>
+            <Header>Countries by Continent</Header>
             <SearchCountryForm searchText={searchText} handleChange={handleChange}/>
             <ContinentsList allCountries={searchedCountry(allCountries, searchText)} allContinents={allContinents}/>
         </Container>
