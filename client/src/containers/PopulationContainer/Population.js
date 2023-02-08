@@ -8,73 +8,77 @@ import styled from "styled-components"
 import PopGameList from "../../components/PopGameList"
 
 const Header = styled.h2`
-text-align: center; 
-font-family: 'Oswald', sans-serif;
-font-size: 2.5em;
+    text-align: center; 
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5em;
 `
-// const SubHeader = styled.h4`
-// text-align: center; 
-// font-family: 'Oswald', sans-serif;
-// `
+
 const Paragraph = styled.p`
-text-align: center;
-font-family: 'Oswald', sans-serif;
-font-size: 18px; 
-width: 50%; 
-align-items: center;
-margin: 0 auto;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px; 
+    width: 40%; 
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 1em;
 `
+
 const ScoreContainer = styled.div`
-font-size: 16px; 
-font-weight: bold; 
-display: flex;
-justify-content: flex-end;
-background-color: #5F898A;
-align-items: center;
-width: 15em;
-margin: 0 auto;
-position: absolute;
-right: 2em;
-top: 9em;
-height: 7em;
-text-align: center;
-flex-direction: column;
-justify-content: center;
-justify-items: center;
-border-radius: 12px; 
-box-shadow: 0 6px 10px #4B5452;
-text-align: center; 
-margin-top: 0em;
-color: #ffff; 
-text-shadow: 2px 2px 0px  #000, -2px -2px 0px  #000, 2px -2px 0px  #000, -2px 2px 0px  #000;
+    font-size: 16px; 
+    font-weight: bold; 
+    display: flex;
+    justify-content: flex-end;
+    background-color: #5F898A;
+    align-items: center;
+    width: 15em;
+    margin: 0 auto;
+    position: absolute;
+    right: 2em;
+    top: 9em;
+    height: 7em;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    border-radius: 12px; 
+    box-shadow: 0 6px 10px #4B5452;
+    text-align: center; 
+    margin-top: 0em;
+    color: #ffff; 
+    text-shadow: 2px 2px 0px  #000, -2px -2px 0px  #000, 2px -2px 0px  #000, -2px 2px 0px  #000;
 `
 const Scores = styled.h2`
-text-align: center; 
-margin: 5px; 
+    text-align: center; 
+    margin: 5px; 
 `
 
+const PopulationQuiz = ({user, updateScores}) => {
 
-const PopulationQuiz = ({ user, updateScores }) => {
 
     const [countriesToPlay, setCountriesToPlay] = useState([])
     const [gameOver, setGameOver] = useState(false)
     const [gameWon, setGameWon] = useState(false)
     const [correctGuessCount, setCorrectGuessCount] = useState(0)
 
-    const newGame = () => {
+    const updateUser = () => {
         // Update user state and DB values with scores:
         const updatedUser = { ...user }
         const newStats = { ...updatedUser.popGame }
         const newGuesses = [...newStats.correctGuesses]
-
+        
         newStats.played += 1
         if (gameWon) { newStats.won += 1 }
         newGuesses.push(correctGuessCount)
-
+        
         newStats.correctGuesses = newGuesses
         updatedUser.popGame = newStats
-        updateAUser(user._id, updatedUser)
-        updateScores(updatedUser)
+
+        return updatedUser
+    }
+
+    const newGame = () => {
+        // Update the user state value to reflect the game played:
+        updateScores(updateUser())
 
         // Reset all other states for next game:
         getData()
@@ -99,6 +103,8 @@ const PopulationQuiz = ({ user, updateScores }) => {
             updatedCountries[country.cardPosition].guessCorrect = false
         }
 
+        console.log(gameWon)
+
         if (country.cardPosition === countriesToPlay.length - 1) {
             setGameOver(true)
             setGameWon(updatedCountries[country.cardPosition].guessCorrect)
@@ -108,6 +114,9 @@ const PopulationQuiz = ({ user, updateScores }) => {
             updatedCountries[country.cardPosition + 1].status = "current"
         }
 
+        console.log(gameWon)
+
+        updateAUser(user._id, updateUser()) // Not working here when winning - likely due to timing issue? Need to move this to run as a .then? But need to avoid running when game is not over??
         setCountriesToPlay(updatedCountries)
     }
 
