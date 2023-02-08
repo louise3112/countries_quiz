@@ -69,11 +69,11 @@ const NavBar = () => {
                 </NavLink>
                 {showQuizzes && (
                 <QuizzesDropDown>
-                    <NavLink to="/FlagQuiz">Flag Quiz</NavLink>
+                    <NavLink to="/FlagQuiz">Whose Flag Is It Anyway?</NavLink>
                     <NavLink to="/LanguageQuiz">Language Quiz</NavLink>
-                    <NavLink to="/CountriesQuiz">Countries Quiz</NavLink>
-                    <NavLink to="/PopulationQuiz">Population Quiz</NavLink>
-                    <NavLink to="/LocationQuiz">Location Quiz</NavLink>
+                    <NavLink to="/CountriesQuiz">Capitals Quiz</NavLink>
+                    <NavLink to="/PopulationQuiz">Play Your Population Right</NavLink>
+                    {/* <NavLink to="/LocationQuiz">Location Quiz</NavLink> */}
                 </QuizzesDropDown>
             )}
             </NavBarLayout>

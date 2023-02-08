@@ -4,8 +4,8 @@ const Footer = () => {
 
     return (
         <footer>
-        <div class="container">
-            <p class="copyright">Geographun © 2023</p>
+        <div className="container">
+            <p className="copyright">geograPHUN © 2023</p>
         </div>
     </footer>
     )

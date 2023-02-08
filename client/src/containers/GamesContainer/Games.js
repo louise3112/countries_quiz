@@ -57,7 +57,7 @@ const Games = () => {
                 <NavLink to="/FlagQuiz">
                     <Box>
                         <Images className='Flags' src={Flags} alt='Flags' />
-                        <GamesItems>Flag Quiz</GamesItems>
+                        <GamesItems>Whose Flag Is It Anyway?</GamesItems>
                     </Box>
                 </NavLink>
                 <NavLink to="/CountriesQuiz">
@@ -69,13 +69,13 @@ const Games = () => {
                 <NavLink to="/PopulationQuiz">
                     <Box>
                         <Images className='Population' src={Population} alt='Population' />
-                        <GamesItems>Population Quiz</GamesItems>
+                        <GamesItems>Play Your Population Right</GamesItems>
                     </Box>
                 </NavLink>
-                <NavLink to="/LocationQuiz">
+                <NavLink to="/LanguageQuiz">
                     <Box>
                         <Images className='Compass' src={Compass} alt='Compass' />
-                        <GamesItems>Country Location Quiz</GamesItems>
+                        <GamesItems>Language Quiz</GamesItems>
                     </Box>
                 </NavLink>
             </GamesGrid>

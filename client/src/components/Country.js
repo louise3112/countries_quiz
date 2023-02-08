@@ -12,6 +12,8 @@ align-content: center;
 `;
 
 const Container = styled.div`
+display: flex; 
+flex-direction: column;
 align-items: center;
 align-content: center; 
 justify-content: center;
@@ -37,7 +39,8 @@ const CountryInfo = styled.div`
 text-align: center;
 `
 const CountryInfoTitle = styled.h4`
-font-size: 18px; 
+font-size: 1.5em;
+margin: 0.8em; 
 text-align: center;
 `
 
@@ -49,15 +52,13 @@ const Country = () => {
     useEffect(() => {
         getACountry(id)
             .then(result => setCountryDetails(result))
-    })
+    },[])
 
     const joinString = (objectValues) => {
-        console.log(objectValues)
         return objectValues ? Object.values(objectValues).join(", ") : ""
     }
 
     const joinStringNestedObject = (objectValues) => {
-        console.log(objectValues)
         return objectValues ? Object.values(objectValues).map(currency => currency.name).join(", ") : ""
     }
 
@@ -66,18 +67,16 @@ const Country = () => {
             <StyledDiv>
                 <Container>
                     <Flag src={countryDetails.flag} width="100"></Flag>
-                    <CountryInfoTitle>Country Details</CountryInfoTitle>
+                    <CountryInfoTitle>{countryDetails.name}</CountryInfoTitle>
                     <CountryInfo>
-                    <p><strong>Country Name:</strong> {countryDetails.name}</p>
-                    <p><strong>Country Region:</strong> {countryDetails.region}</p>
-                    <p><strong>Country Subregion:</strong> {countryDetails.subregion}</p>
+                    <p><strong>Region:</strong> {countryDetails.region}</p>
+                    <p><strong>Subregion:</strong> {countryDetails.subregion}</p>
                     <p><strong>Languages:</strong> {joinString(countryDetails.language)}</p>
                     <p><strong>Currency:</strong> {joinStringNestedObject(countryDetails.currencies)}</p>
-                    <p><strong>Borders:</strong> {countryDetails.borders ? countryDetails.borders.join(", ") : ""}</p>
-                    <p><strong>Population:</strong> {countryDetails.population}</p>
+                    {/* <p><strong>Borders:</strong> {countryDetails.borders ? countryDetails.borders.join(", ") : ""}</p> */}
+                    {countryDetails.population && <p><strong>Population:</strong> {countryDetails.population.toLocaleString()}</p> }  
                     <p><strong>Capital:</strong> {countryDetails.capital}</p>
-                    <p><strong>Latitude:</strong> {countryDetails.latitude}</p>
-                    <p><strong>Latitude:</strong> {countryDetails.latitude}</p>
+                    <p><strong>Latitude / Longitude:</strong> {countryDetails.latitude + " / " + countryDetails.longitude}</p>
                     </CountryInfo>
                 </Container>
             </StyledDiv>
@@ -86,3 +85,7 @@ const Country = () => {
 }
 
 export default Country
+
+// country.population.toLocaleString()
+
+// .toLocaleString

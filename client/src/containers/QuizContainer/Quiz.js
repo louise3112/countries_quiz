@@ -83,6 +83,22 @@ const CountriesQuiz = () => {
         setFormSubmitted(true);
     };
 
+    const processRefresh = () => {
+        getAllCountries().then(data => {
+            setCountries(data);
+            setFilteredCountries(data);
+            const randomIndex = Math.floor(Math.random() * data.length);
+            const selectedCountry = data[randomIndex];
+            setCountry(selectedCountry);
+            setUserGuess("");
+            setFormSubmitted(false)
+        });
+    }
+
+    const handleRefreshClick = () => {
+        processRefresh()
+    }
+
     return (
         <>
         <Header>Capitals Quiz</Header>
@@ -106,6 +122,7 @@ const CountriesQuiz = () => {
                     ))}
                 </div>
             </form>
+            <button onClick={handleRefreshClick} >Next Capital</button>
         </Container>
         </>
     );
