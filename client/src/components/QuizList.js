@@ -1,4 +1,3 @@
-import React, { useState , useEffect } from "react"
 import QuizItem from "./QuizItem"
 import styled from "styled-components"
 
@@ -22,7 +21,11 @@ const Language = styled.h3`
     text-align: center;
 `
 const Answer = styled.p`
-    text-align: center;
+
+text-align: center;
+font-size: 1.25em;
+font-weight: bold;
+
 `
 const CurrentScore = styled.h2`
     left: 1em; 
@@ -63,7 +66,7 @@ const Button = styled.button`
     font-family: 'Oswald', sans-serif;
 `
 
-const QuizList = ({answerOptions , processGuess, hasUserAnswered, userCorrect, processRefresh, score, highScore, gameType}) => {
+const QuizList = ({answerOptions , processGuess, hasUserAnswered, userCorrect, processRefresh, user, gameType}) => {
 
     const countryToShowObject = answerOptions.find(option => option.isCorrect)
 
@@ -83,13 +86,15 @@ const QuizList = ({answerOptions , processGuess, hasUserAnswered, userCorrect, p
     return (
         <div>
             <ScoreContainer>
-            <CurrentScore>Current Score: {score}</CurrentScore>
-            <CurrentScore>High Score: {highScore}</CurrentScore>
+                {user[gameType] && <CurrentScore>Current Run: {user[gameType].currentStreak}</CurrentScore>}
+                {user[gameType] && <CurrentScore>Best Run: {user[gameType].highStreak}</CurrentScore>}
             </ScoreContainer>
             {questionInfo} 
-            { hasUserAnswered 
-                ?  <div><Answer>{userCorrect ? "You got it! Well Done!" : "Wrong! This "+gameType+" belongs to " + countryToShowObject.name } </Answer>
-                <Button onClick={handleRefreshClick} >Next {gameType}</Button></div>
+            {hasUserAnswered 
+                ?  <div><Answer>{userCorrect 
+                        ? "You got it! This "+gameType+" belongs to " + countryToShowObject.name + "!"
+                        : "Wrong! This "+gameType+" belongs to " + countryToShowObject.name + "!"} </Answer>
+                    <Button onClick={handleRefreshClick} >Next {gameType}</Button></div>
                 : <ul>{listOfAnswerItems}</ul> }
         </div>
     )
