@@ -21,7 +21,7 @@ const Continents = () => {
     }
 
     const searchedCountry = (allCountries, searchText) => {
-        return allCountries.filter((country) => country.name.toLowerCase().includes(searchText.toLowerCase()) || country.code.toLowerCase().includes(searchText))
+        return allCountries.filter((country) => country.name.toLowerCase().includes(searchText.toLowerCase()) || country.code.toLowerCase().includes(searchText.toLowerCase()))
     }
 
 
