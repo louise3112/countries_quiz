@@ -6,6 +6,12 @@ import Population from '../images/Population.jpeg'
 import Compass from '../images/Compass.jpeg'
 import { Link } from "react-router-dom";
 
+const Container = styled.div`
+display: flex;
+flex-direction: column;
+min-height: 100vh; 
+`
+
 const GamesGrid = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -52,7 +58,7 @@ const Games = () => {
 
     return (
         <>
-        <div className="Games-container">
+        <Container>
             <GamesGrid className="Games-list">
                 <NavLink to="/FlagQuiz">
                     <Box>
@@ -79,7 +85,7 @@ const Games = () => {
                     </Box>
                 </NavLink>
             </GamesGrid>
-        </div>
+        </Container>
     {/* <div>
     <Footer />
     </div> */}

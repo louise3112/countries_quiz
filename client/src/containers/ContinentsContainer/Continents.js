@@ -2,6 +2,13 @@ import { useState, useEffect } from "react"
 import ContinentsList from "../../components/ContinentsList"
 import { getAllCountries } from "../../helpers/countryDataFetches"
 import SearchCountryForm from "../../components/SearchCountryForm"
+import styled from "styled-components"
+
+const Container = styled.div`
+display: flex;
+flex-direction:column;
+min-height: 100vh;
+`
 
 const Continents = () => {
 
@@ -14,7 +21,7 @@ const Continents = () => {
     }
 
     const searchedCountry = (allCountries, searchText) => {
-        return allCountries.filter((country) => country.name.toLowerCase().includes(searchText) || country.code.toLowerCase().includes(searchText))
+        return allCountries.filter((country) => country.name.toLowerCase().includes(searchText.toLowerCase()) || country.code.toLowerCase().includes(searchText))
     }
 
 
@@ -32,10 +39,10 @@ const Continents = () => {
     }, [])
 
     return (
-        <>
+        <Container>
             <SearchCountryForm searchText={searchText} handleChange={handleChange}/>
             <ContinentsList allCountries={searchedCountry(allCountries, searchText)} allContinents={allContinents}/>
-        </>
+        </Container>
     )
 
 }

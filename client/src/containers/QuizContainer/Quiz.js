@@ -3,6 +3,11 @@ import { getAllCountries } from "../../helpers/countryDataFetches";
 import styled from "styled-components";
 import Capitals from '../images/Capitals.jpg'
 
+const Container = styled.div`
+display: flex;
+flex-direction: column;
+min-height: 100vh; 
+`
 
 const Header = styled.h1`
 font-size: 2.5em; 
@@ -10,7 +15,7 @@ text-align: center;
 margin: 2px; 
 `
 
-const Container = styled.div`
+const ContentContainer = styled.div`
 border-bottom-right-radius:10px;
 border-bottom-left-radius: 10px; 
 display: flex; 
@@ -100,10 +105,10 @@ const CountriesQuiz = () => {
     }
 
     return (
-        <>
+        <Container>
         <Header>Capitals Quiz</Header>
         <CapitalPhoto className='Capitals' src={Capitals} alt='Capitals' />
-        <Container>
+        <ContentContainer>
             <form onSubmit={handleSubmit}>
                 <h4>
                     <p>{country.capital} is the capital of which country?</p>
@@ -123,8 +128,8 @@ const CountriesQuiz = () => {
                 </div>
             </form>
             <button onClick={handleRefreshClick} >Next Capital</button>
+        </ContentContainer>
         </Container>
-        </>
     );
 };
 

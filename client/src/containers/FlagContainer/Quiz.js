@@ -5,6 +5,12 @@ import QuizList from "../../components/QuizList"
 import styled from "styled-components"
 import '../../App.js'
 
+const Container = styled.div`
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+`
+
 const Text = styled.h3`
 text-align: center;
 margin: 0;
@@ -85,14 +91,14 @@ const Quiz = ({gameType}) => {
 
 
     return (
-        <div>
+        <Container>
             <Header>{gameType} Quiz</Header>
             <Text>Guess what country's {gameType.toLowerCase()} this is. Choose from one of the three options below.</Text>
             <QuizList answerOptions={answerOptions} processGuess={processGuess}
                 hasUserAnswered={hasUserAnswered} userCorrect={userCorrect}
                 processRefresh={processRefresh} score={score}
                 highScore={highScore} gameType={gameType}/>
-        </div>
+        </Container>
     )
 
 }

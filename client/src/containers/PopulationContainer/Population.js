@@ -7,6 +7,12 @@ import styled from "styled-components"
 
 import PopGameList from "../../components/PopGameList"
 
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+`
+
 const Header = styled.h2`
     text-align: center; 
     font-family: 'Oswald', sans-serif;
@@ -158,7 +164,7 @@ const PopulationQuiz = ({user, updateScores}) => {
     {gameOver && updateAUser(user._id, updateUser())}
 
     return (
-        <div>
+        <Container>
             <Header>Play Your Population Right!</Header>
             <ScoreContainer>
                 {user.popGame && <Scores>Games Played: {user.popGame.played}</Scores>}
@@ -166,7 +172,7 @@ const PopulationQuiz = ({user, updateScores}) => {
             </ScoreContainer> 
             {!gameOver && <Paragraph>Decide whether the population for the country revealed is 'Higher' or 'Lower' than the population of the previous country. </Paragraph>}
             <PopGameList countries={countriesToPlay} processAnswer={processAnswer} gameOver={gameOver} gameWon={gameWon} newGame={newGame}/>
-        </div>
+        </Container>
     )
 }
 

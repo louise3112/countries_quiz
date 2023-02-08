@@ -11,6 +11,16 @@ import PopulationQuiz from './containers/PopulationContainer/Population';
 import CountriesQuiz from './containers/QuizContainer/Quiz';
 import Country from './components/Country';
 import Footer from './components/Footer'
+import styled from 'styled-components';
+
+const Container = styled.div`
+display: flex;
+flex-direction: column;
+min-height:100vh;
+`
+const Contents = styled.div`
+    flex: 1;
+`
 
 
 function App() {
@@ -30,7 +40,8 @@ function App() {
     }, [])
 
     return (
-        <div className="App">
+            <Container>
+            <Contents>
             <Router>
                 <header>
                     <NavBar />
@@ -50,7 +61,8 @@ function App() {
                 </div>
             </Router>
             <Footer />
-        </div>
+            </Contents>
+            </Container>
     )
 }
 

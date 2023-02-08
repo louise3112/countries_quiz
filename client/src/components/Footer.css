@@ -1,4 +1,5 @@
 .container {
+    bottom: 0;
     padding:6px;
     text-align: center;
     height: 2em;
