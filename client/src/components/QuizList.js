@@ -2,66 +2,68 @@ import QuizItem from "./QuizItem"
 import styled from "styled-components"
 
 const Flag = styled.img`
-height: 14em;
-width: auto; 
-position: relative;
-display: block;
-margin-left: auto;
-margin-right: auto;
-border: solid lightgrey;
+    height: 14em;
+    width: auto; 
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid lightgrey;
 `
 const Language = styled.h3`
-width: 30em;
-position: relative;
-display: block;
-margin-left: auto;
-margin-right: auto;
-border: solid lightgrey;
-margin-bottom: 30px; 
-text-align: center;
+    width: 30em;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid lightgrey;
+    margin-bottom: 30px; 
+    text-align: center;
 `
 const Answer = styled.p`
+
 text-align: center;
 font-size: 1.25em;
 font-weight: bold;
+
 `
 const CurrentScore = styled.h2`
-left: 1em; 
-text-align: center; 
-margin: 5px; 
-color: #ffff; 
-text-shadow: 2px 2px 0px  #000, -2px -2px 0px  #000, 2px -2px 0px  #000, -2px 2px 0px  #000;
+    left: 1em; 
+    text-align: center; 
+    margin: 5px; 
+    color: #ffff; 
+    text-shadow: 2px 2px 0px  #000, -2px -2px 0px  #000, 2px -2px 0px  #000, -2px 2px 0px  #000;
 `
 const ScoreContainer = styled.div`
-display: flex;
-justify-content: flex-end;
-background-color: #5F898A;
-align-items: center;
-width: 15em;
-margin: 0 auto;
-position: absolute;
-right: 2em;
-top: 9em;
-height: 7em;
-text-align: center;
-flex-direction: column;
-justify-content: center;
-justify-items: center;
-border-radius: 12px; 
-box-shadow: 0 6px 10px #4B5452;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #5F898A;
+    align-items: center;
+    width: 15em;
+    margin: 0 auto;
+    position: absolute;
+    right: 2em;
+    top: 9em;
+    height: 7em;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    border-radius: 12px; 
+    box-shadow: 0 6px 10px #4B5452;
 `
 const Button = styled.button`
-cursor: pointer; 
-height: 4em;
-width: 20em;
-display: block;
-margin-left: auto; 
-margin-right: auto;
-background-color: #F3DC65;
-border-radius: 6px;
-font-weight: bold;
-font-size: 14px; 
-font-family: 'Oswald', sans-serif;
+    cursor: pointer; 
+    height: 4em;
+    width: 20em;
+    display: block;
+    margin-left: auto; 
+    margin-right: auto;
+    background-color: #F3DC65;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px; 
+    font-family: 'Oswald', sans-serif;
 `
 
 const QuizList = ({answerOptions , processGuess, hasUserAnswered, userCorrect, processRefresh, user, gameType}) => {

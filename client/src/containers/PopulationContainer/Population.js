@@ -15,7 +15,7 @@ const Container = styled.div`
 
 const Header = styled.h2`
     text-align: center; 
-    font-family: 'Oswald', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 2.5em;
 `
 

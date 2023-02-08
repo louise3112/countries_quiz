@@ -1,4 +1,14 @@
 import CountriesList from "./CountriesList"
+import styled from "styled-components"
+
+const Header = styled.h4`
+    font-size: 2em;
+    margin-left: 3.8em;
+    margin-bottom: 0;
+`
+const UnorderedList = styled.ul`
+    margin:0; 
+`
 
 const ContinentsList = ({allContinents, allCountries}) => {
     const countriesByContinent = allContinents.map(continent => {
@@ -14,7 +24,7 @@ const ContinentsList = ({allContinents, allCountries}) => {
 
     return (
         <>
-        <h4>Countries in this Continent</h4>
+        <Header>Countries in this Continent</Header>
             <ul>
                 {countriesByContinent}
             </ul>

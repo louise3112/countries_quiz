@@ -5,28 +5,28 @@ import styled from "styled-components";
 import Capitals from '../images/Capitals.jpg'
 
 const Container = styled.div`
-display: flex;
-flex-direction: column;
-min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
 `
 
 const Header = styled.h1`
-font-size: 2.5em; 
-text-align: center;
-margin: 2px; 
+    font-size: 2.5em; 
+    text-align: center;
+    margin-top: 10px; 
 `
 
 const ContentContainer = styled.div`
-border-bottom-right-radius:10px;
-border-bottom-left-radius: 10px; 
-display: flex; 
-align-items: center; 
-justify-content: center; 
-width: 29.9em;
-margin-left: auto;
-margin-right: auto;
-margin-bottom: 30px;
-background-color: #96bcb4;
+    border-bottom-right-radius:10px;
+    border-bottom-left-radius: 10px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    width: 29.9em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    background-color: #96bcb4;
 `;
 
 const CapitalPhoto = styled.img`

@@ -3,19 +3,21 @@ import styled from "styled-components"
 import City from '../images/cityscape.jpg'
 import Flags from '../images/flags.jpg'
 import Population from '../images/Population.jpeg'
-import Compass from '../images/Compass.jpeg'
+import Languages from '../images/Languages.jpeg'
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
-display: flex;
-flex-direction: column;
-min-height: 100vh; 
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
 `
 
 const GamesGrid = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-content: center;
     position: relative;
     top: 5rem;
     margin-left: 10px;
@@ -41,7 +43,6 @@ const Images = styled.img`
 `
 const Box = styled.div`
     width: 16em;
-    margin-bottom: 15em;
     border: 1px solid #ccc;
     text-align: center;
     padding: 45px;
@@ -80,7 +81,7 @@ const Games = () => {
                 </NavLink>
                 <NavLink to="/LanguageQuiz">
                     <Box>
-                        <Images className='Compass' src={Compass} alt='Compass' />
+                        <Images className='Languages' src={Languages} alt='Languages' />
                         <GamesItems>Language Quiz</GamesItems>
                     </Box>
                 </NavLink>
