@@ -5,7 +5,7 @@ import Continents from './containers/ContinentsContainer/Continents';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from './containers/NavBar';
 import Games from './containers/GamesContainer/Games';
-import FlagsQuiz from './containers/FlagContainer/FlagQuiz';
+import Quiz from './containers/FlagContainer/Quiz';
 import LocationQuiz from './containers/LocationContainer/Location';
 import PopulationQuiz from './containers/PopulationContainer/Population';
 import CountriesQuiz from './containers/QuizContainer/Quiz';
@@ -40,7 +40,8 @@ function App() {
                     <Route path="/" element={<Games />} />
                     <Route path="/CountriesFacts" element={<Continents />} />
                     <Route path="/CountriesFacts/:id" element={<Country />} />
-                    <Route path="/FlagQuiz" element={<FlagsQuiz />} />
+                    <Route path="/FlagQuiz" element={<Quiz gameType="Flag"/>} />
+                    <Route path="/LanguageQuiz" element={<Quiz gameType="Language" />} />
                     <Route path="/CountriesQuiz" element={<CountriesQuiz />} />
                     <Route path="/PopulationQuiz" element={<PopulationQuiz user={user} updateScores={updateScores}/>} />
                     <Route path="/LocationQuiz" element={<LocationQuiz />} />                    

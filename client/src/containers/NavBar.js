@@ -70,6 +70,7 @@ const NavBar = () => {
                 {showQuizzes && (
                 <QuizzesDropDown>
                     <NavLink to="/FlagQuiz">Flag Quiz</NavLink>
+                    <NavLink to="/LanguageQuiz">Language Quiz</NavLink>
                     <NavLink to="/CountriesQuiz">Countries Quiz</NavLink>
                     <NavLink to="/PopulationQuiz">Population Quiz</NavLink>
                     <NavLink to="/LocationQuiz">Location Quiz</NavLink>

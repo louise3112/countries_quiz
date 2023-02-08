@@ -1,7 +1,7 @@
-import { randomCountries, randomIndex } from "../../helpers/usefulFunctions"
+import { randomCountries, randomIndex, getLanguageForQuestion } from "../../helpers/usefulFunctions"
 import { getAllCountries } from "../../helpers/countryDataFetches"
 import React, { useState, useEffect } from "react"
-import FlagsQuizList from "../../components/FlagQuizList"
+import QuizList from "../../components/QuizList"
 import styled from "styled-components"
 import '../../App.js'
 
@@ -19,14 +19,28 @@ font-size: 2.5em;
 margin:4px;
 `
 
-const FlagsQuiz = () => {
-
+const Quiz = ({gameType}) => {
     const [answerOptions, setAnswerOptions] = useState([])
 
     // Maps over the random country array to create a new array with the data we need
     const prepAnswers = (countriesArray) => {
         const randomCountriesArray = randomCountries(countriesArray, 3) // Selects 3 random country objects and puts them in an array
-        const correctAnswerIndex = randomIndex(randomCountriesArray.length)
+        let indexOfLanguage = -1 // undefined  // Because any number 0 or more could be an array index
+        if(gameType == "Language") {
+            const languageInSingleCountry = getLanguageForQuestion(randomCountriesArray) // ["English", [{countryObj.name}]]
+            if(!languageInSingleCountry) {
+                // All options have repeated langauges
+                processRefresh()
+            }
+            
+            for(let i=0; i< randomCountriesArray.length; i++) {
+                if(languageInSingleCountry[1][0].name == randomCountriesArray[i].name) { 
+                    indexOfLanguage = i
+                    break;
+                }
+            }
+        }
+        const correctAnswerIndex = (gameType=="Flag")?randomIndex(randomCountriesArray.length):indexOfLanguage
         const answersList = randomCountriesArray.map((country, index) => {
             return {
                 ...country,
@@ -72,16 +86,16 @@ const FlagsQuiz = () => {
 
     return (
         <div>
-            <Header>Flag Quiz</Header>
-            <Text>Guess what countries flag this is. Choose from one of the three options below.</Text>
-            <FlagsQuizList answerOptions={answerOptions} processGuess={processGuess}
+            <Header>{gameType} Quiz</Header>
+            <Text>Guess what country's {gameType.toLowerCase()} this is. Choose from one of the three options below.</Text>
+            <QuizList answerOptions={answerOptions} processGuess={processGuess}
                 hasUserAnswered={hasUserAnswered} userCorrect={userCorrect}
                 processRefresh={processRefresh} score={score}
-                highScore={highScore} />
+                highScore={highScore} gameType={gameType}/>
         </div>
     )
 
 }
 
 
-export default FlagsQuiz
+export default Quiz
