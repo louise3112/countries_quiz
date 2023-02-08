@@ -20,10 +20,9 @@ const Paragraph = styled.p`
 text-align: center;
 font-family: 'Oswald', sans-serif;
 font-size: 18px; 
-width: 40%; 
+width: 50%; 
 align-items: center;
 margin: 0 auto;
-margin-bottom: 1em; 
 `
 const ScoreContainer = styled.div`
 font-size: 16px; 

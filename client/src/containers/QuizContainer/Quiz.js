@@ -3,9 +3,12 @@ import { getAllCountries } from "../../helpers/countryDataFetches";
 import styled from "styled-components";
 import Capitals from '../images/Capitals.jpg'
 
-const Spacer = styled.div`
-margin-top: 1em;
-`;
+
+const Header = styled.h1`
+font-size: 2.5em; 
+text-align: center;
+margin: 2px; 
+`
 
 const Container = styled.div`
 border-bottom-right-radius:10px;
@@ -14,7 +17,9 @@ display: flex;
 align-items: center; 
 justify-content: center; 
 width: 29.9em;
-margin: auto;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 30px;
 background-color: #96bcb4;
 `;
 
@@ -31,7 +36,6 @@ max-width: 100%;
 const Input = styled.input`
 width: 70%;
 `
-
 
 const CountriesQuiz = () => {
     const [countries, setCountries] = useState([]);
@@ -81,7 +85,7 @@ const CountriesQuiz = () => {
 
     return (
         <>
-        <Spacer />
+        <Header>Capitals Quiz</Header>
         <CapitalPhoto className='Capitals' src={Capitals} alt='Capitals' />
         <Container>
             <form onSubmit={handleSubmit}>
@@ -96,7 +100,7 @@ const CountriesQuiz = () => {
                 </h4>
                 <div style={{ display: userGuess.length > 0 ? "block" : "none" }}>
                     {filteredCountries.map(country => (
-                        <p key={country.alpha3Code} onClick={() => handleCountryClick(country.name)}>
+                        <p onClick={() => handleCountryClick(country.name)}>
                             {country.name}
                         </p>
                     ))}
