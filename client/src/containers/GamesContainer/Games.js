@@ -67,7 +67,7 @@ const Games = () => {
                         <GamesItems>Whose Flag Is It Anyway?</GamesItems>
                     </Box>
                 </NavLink>
-                <NavLink to="/CountriesQuiz">
+                <NavLink to="/CapitalsQuiz">
                     <Box>
                         <Images className='City' src={City} alt='City' />
                         <GamesItems>A Question of Capitals</GamesItems>
