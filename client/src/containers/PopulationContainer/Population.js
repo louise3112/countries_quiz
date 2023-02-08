@@ -54,6 +54,7 @@ const Scores = styled.h2`
 
 const PopulationQuiz = ({user, updateScores}) => {
 
+
     const [countriesToPlay, setCountriesToPlay] = useState([])
     const [gameOver, setGameOver] = useState(false)
     const [gameWon, setGameWon] = useState(false)
@@ -61,12 +62,12 @@ const PopulationQuiz = ({user, updateScores}) => {
 
     const updateUser = () => {
         // Update user state and DB values with scores:
-        const updatedUser = {...user}
-        const newStats = {...updatedUser.popGame}
+        const updatedUser = { ...user }
+        const newStats = { ...updatedUser.popGame }
         const newGuesses = [...newStats.correctGuesses]
         
         newStats.played += 1
-        if (gameWon) {newStats.won += 1}
+        if (gameWon) { newStats.won += 1 }
         newGuesses.push(correctGuessCount)
         
         newStats.correctGuesses = newGuesses
@@ -163,9 +164,9 @@ const PopulationQuiz = ({user, updateScores}) => {
         <div>
             <Header>Play Your Population Right!</Header>
             <ScoreContainer>
-              {user.popGame && <Scores>Games Played: {user.popGame.played}</Scores>}
-              {user.popGame && <Scores>Games Won: {user.popGame.won}</Scores>}
-            </ScoreContainer> 
+                {user.popGame && <Scores>Games Played: {user.popGame.played}</Scores>}
+                {user.popGame && <Scores>Games Won: {user.popGame.won}</Scores>}
+            </ScoreContainer>
             <Paragraph>Decide whether the population for the country revealed is 'Higher' or 'Lower' than the population of the previous country and select the relevant button! </Paragraph>
             <PopGameList countries={countriesToPlay} processAnswer={processAnswer} gameOver={gameOver} gameWon={gameWon} newGame={newGame} />
         </div>

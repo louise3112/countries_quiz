@@ -35,13 +35,14 @@ const Images = styled.img`
 `
 const Box = styled.div`
     width: 16em;
-    margin-bottom: 6px;
+    margin-bottom: 15em;
     border: 1px solid #ccc;
     text-align: center;
     padding: 45px;
     background-color: #5F898A;
     border-radius: 10px;
     box-shadow: 0 6px 10px #4B5452;
+    position: relative; 
 `
 const NavLink = styled(Link)`
 text-decoration: none;
@@ -50,6 +51,7 @@ text-decoration: none;
 const Games = () => {
 
     return (
+        <>
         <div className="Games-container">
             <GamesGrid className="Games-list">
                 <NavLink to="/FlagQuiz">
@@ -77,9 +79,11 @@ const Games = () => {
                     </Box>
                 </NavLink>
             </GamesGrid>
-            <footer>
-            </footer>
         </div>
+    {/* <div>
+    <Footer />
+    </div> */}
+    </>
     )
 }
 
