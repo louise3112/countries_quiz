@@ -30,6 +30,7 @@ const Quiz = ({gameType, user, updateScores}) => {
     const [answerOptions, setAnswerOptions] = useState([])
     const [userCorrect, setUserCorrect] = useState(false)
     const [hasUserAnswered, sethasUserAnswered] = useState(false)
+    const [continent, setContinent] = useState(null);
 
     const updateUser = (result) => {
         const updatedUser = {...user}
@@ -53,8 +54,13 @@ const Quiz = ({gameType, user, updateScores}) => {
     }
 
     // Maps over the random country array to create a new array with the data we need
-    const prepAnswers = (countriesArray) => {
-        const randomCountriesArray = randomCountries(countriesArray, 3) // Selects 3 random country objects and puts them in an array
+    const prepAnswers = (countriesArray, continent) => {
+        let filteredCountriesArray = countriesArray;
+        if (continent) {
+          filteredCountriesArray = countriesArray.filter(country => country.continents.includes(continent));
+        }
+
+        const randomCountriesArray = randomCountries(filteredCountriesArray, 3) // Selects 3 random country objects and puts them in an array
         let indexOfLanguage = -1 // undefined  // Because any number 0 or more could be an array index
         if(gameType == "Language") {
             const languageInSingleCountry = getLanguageForQuestion(randomCountriesArray) // ["English", [{countryObj.name}]]
@@ -90,7 +96,7 @@ const Quiz = ({gameType, user, updateScores}) => {
     const processRefresh = () => {
         getAllCountries()
             .then(allCountries => {
-                const selectedAnswers = prepAnswers(allCountries)
+                const selectedAnswers = prepAnswers(allCountries, continent)
                 setAnswerOptions(selectedAnswers)
                 setUserCorrect(false)
                 sethasUserAnswered(false)
@@ -112,6 +118,11 @@ const Quiz = ({gameType, user, updateScores}) => {
         <Container>
             <Header>{gameType} Quiz</Header>
             <Text>Guess what country's {gameType.toLowerCase()} this is. Choose from one of the three options below.</Text>
+                <select onChange={e => setContinent(e.target.value)}>
+                <option value={null}>All Continents</option>
+                <option value="Europe">Europe</option>
+                <option value="Asia">Asia</option>
+            </select>
             <QuizList 
                 answerOptions={answerOptions} 
                 processGuess={processGuess}
