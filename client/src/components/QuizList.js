@@ -68,9 +68,9 @@ const QuizList = ({answerOptions , processGuess, hasUserAnswered, userCorrect, p
     const countryToShowObject = answerOptions.find(option => option.isCorrect)
 
     const setQuestion = () => {
-        if (gameType === "Flag") {
+        if (countryToShowObject && gameType === "Flag") {
             return <Picture src={countryToShowObject.flag} />
-        } else if (gameType === "Language") {
+        } else if (countryToShowObject && gameType === "Language") {
             return (
                 <div>
                     <Picture src={Languages}/> 
@@ -96,7 +96,7 @@ const QuizList = ({answerOptions , processGuess, hasUserAnswered, userCorrect, p
                 {user[gameType] && <CurrentScore>Current Run: {user[gameType].currentStreak}</CurrentScore>}
                 {user[gameType] && <CurrentScore>Best Run: {user[gameType].highStreak}</CurrentScore>}
             </ScoreContainer>
-            {questionInfo} 
+            {user[gameType] && questionInfo} 
             {hasUserAnswered 
                 ?  <div><Answer>{userCorrect 
                         ? "You got it! This " + gameType + " belongs to " + countryToShowObject.name + "!"
