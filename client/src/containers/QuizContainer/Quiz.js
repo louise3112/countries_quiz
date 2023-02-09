@@ -11,10 +11,11 @@ const Container = styled.div`
     align-items: center;
     min-height: 100vh; 
 `
-const Header = styled.h1`
-    font-size: 2.5em; 
+const Header = styled.h2`
     text-align: center;
-    margin-top: 10px; 
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.5em;
+    margin: 1em 0em 0.6em 0em;
 `
 const ContentContainer = styled.div`
     background-color: #96bcb4;

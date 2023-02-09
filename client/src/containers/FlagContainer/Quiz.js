@@ -12,13 +12,11 @@ const Container = styled.div`
     min-height: 100vh;
 `
 
-const Header = styled.h1`
-    position: relative;
+const Header = styled.h2`
     text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 2.5em;
-    margin-top: 10px; 
-    margin-bottom:6px;
+    margin: 1em 0em 0em 0em;
 `
 
 const Text = styled.h3`
@@ -62,15 +60,26 @@ const Quiz = ({gameType, user, updateScores}) => {
                 }
             }
         }
+        
         const correctAnswerIndex = (gameType=="Flag")?randomIndex(randomCountriesArray.length):indexOfLanguage
         const answersList = randomCountriesArray.map((country, index) => {
             return {
                 ...country,
                 isCorrect: index === correctAnswerIndex
             }
-        }
-        )
+        })
+
         return answersList
+    }
+
+    const getTitle = () => {
+        let title = ""
+        if (gameType === "Language") {
+            title = "Language Challenge"
+        } else if (gameType === "Flag") {
+            title = "Whose Flag Is It Anyway?"
+        } 
+        return title
     }
 
     const processGuess = (result) => {
@@ -101,7 +110,7 @@ const Quiz = ({gameType, user, updateScores}) => {
 
     return (
         <Container>
-            <Header>{gameType} Quiz</Header>
+            {getTitle() !== "" && <Header>{getTitle()}</Header>}
             <Text>Guess what country's {gameType.toLowerCase()} this is. Choose from one of the three options below.</Text>
             <QuizList 
                 answerOptions={answerOptions} 
