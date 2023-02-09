@@ -75,7 +75,7 @@ const NavBar = () => {
                 <QuizzesDropDown>
                     <NavLink to="/FlagQuiz">Whose Flag Is It Anyway?</NavLink>
                     <NavLink to="/LanguageQuiz">Language Challenge</NavLink>
-                    <NavLink to="/CountriesQuiz">A Question of Capitals</NavLink>
+                    <NavLink to="/CapitalsQuiz">A Question of Capitals</NavLink>
                     <NavLink to="/PopulationQuiz">Play Your Population Right</NavLink>
                     {/* <NavLink to="/LocationQuiz">Location Quiz</NavLink> */}
                 </QuizzesDropDown>

@@ -24,7 +24,9 @@ margin-bottom: 30px;
 text-align: center;
 `
 const Answer = styled.p`
-text-align: center;
+    text-align: center;
+    font-size: 1.25em;
+    font-weight: bold;
 `
 const CurrentScore = styled.h2`
 left: 1em; 

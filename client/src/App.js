@@ -8,7 +8,7 @@ import Games from './containers/GamesContainer/Games';
 import Quiz from './containers/FlagContainer/Quiz';
 import LocationQuiz from './containers/LocationContainer/Location';
 import PopulationQuiz from './containers/PopulationContainer/Population';
-import CountriesQuiz from './containers/QuizContainer/Quiz';
+import CapitalsQuiz from './containers/QuizContainer/Quiz';
 import Country from './components/Country';
 import Footer from './components/Footer'
 import styled from 'styled-components';
@@ -53,7 +53,7 @@ function App() {
                     <Route path="/CountriesFacts/:id" element={<Country />} />
                     <Route path="/FlagQuiz" element={<Quiz gameType="Flag" user={user} updateScores={updateScores}/>} />
                     <Route path="/LanguageQuiz" element={<Quiz gameType="Language" user={user} updateScores={updateScores}/>} />
-                    <Route path="/CountriesQuiz" element={<CountriesQuiz />} />
+                    <Route path="/CapitalsQuiz" element={<CapitalsQuiz user={user} updateScores={updateScores}/>} />
                     <Route path="/PopulationQuiz" element={<PopulationQuiz user={user} updateScores={updateScores}/>} />
                     <Route path="/LocationQuiz" element={<LocationQuiz />} />                    
 

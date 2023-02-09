@@ -8,131 +8,211 @@ import Capitals from '../images/Capitals.jpg'
 const Container = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
     min-height: 100vh; 
 `
-
 const Header = styled.h1`
     font-size: 2.5em; 
     text-align: center;
     margin-top: 10px; 
 `
-
 const ContentContainer = styled.div`
-    border-bottom-right-radius:10px;
-    border-bottom-left-radius: 10px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    width: 29.9em;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 30px;
     background-color: #96bcb4;
-`;
-
+    border-radius: 10px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center; 
+    width: 36em;
+    min-height: 24em;
+    padding: 1em;
+    row-gap: 1em;
+`
 const CapitalPhoto = styled.img`
-    border-top-right-radius: 10px; 
-    border-top-left-radius: 10px; 
+    border-radius: 10px;
     background-color:#96bcb4;
-    margin: 2em 0;
-    padding: 0.9em; 
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
+    max-width: 80%;
+`
+const Text = styled.h3`
+    margin: 0;
+`
+const Form = styled.form`
+    display: grid;
+    grid-template-areas:
+        'inputBox submitButton'
+        'answerList .';
+    align-items: center;
+    column-gap: 1em;
 `
 const Input = styled.input`
-    width: 70%;
+    grid-area: inputBox;
+    font-size: 1em;
+    width: 18em;
+    height: 1.5em;
+    border-radius: 2px;
+`
+const SubmitButton = styled.input`
+    grid-area: submitButton;
+    font-size: 1em;
+    width: 8em;
+    height: 1.75em;
+    cursor: pointer; 
+    background-color: #F3DC65;
+    border-radius: 6px;
+    font-family: 'Oswald', sans-serif;
+`
+const AnswerList = styled.ul`
+    grid-area: answerList;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+`
+const AnswerItem = styled.li`
+    margin: 0.5em 0em 0em 1em;
+    text-decoration: underline;
+    color: rgb(90, 90, 90);
+    cursor: pointer;
+    &:hover {color: gold;}
+`
+const QAContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    row-gap: 1em;
+`
+const Answer = styled.p`
+    text-align: center;
+    font-size: 1.25em;
+    font-weight: bold;
+    margin: 0;
+`
+const Button = styled.button`
+    cursor: pointer; 
+    height: 4em;
+    width: 20em;
+    background-color: #F3DC65;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px; 
+    font-family: 'Oswald', sans-serif;
+`
+const ScoreContainer = styled.div`
+    background-color: #5F898A;
+    box-shadow: 0 6px 10px #4B5452;
+    border-radius: 12px;
+    width: 15em;
+    height: 7em;
+    position: absolute;
+    top: 9em;
+    right: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`
+const CurrentScore = styled.h2`
+    margin: 5px; 
+    color: #ffff; 
+    text-shadow: 2px 2px 0px  #000, -2px -2px 0px  #000, 2px -2px 0px  #000, -2px 2px 0px  #000;
 `
 
-const CountriesQuiz = ({user, updateScores}) => {
-    const [countries, setCountries] = useState([]);
-    const [filteredCountries, setFilteredCountries] = useState([]);
-    const [country, setCountry] = useState({});
-    const [userGuess, setUserGuess] = useState("");
-    const [isCorrect, setIsCorrect] = useState(null);
-    const [formSubmitted, setFormSubmitted] = useState(false);
+const CapitalsQuiz = ({user, updateScores}) => {
+    const [countries, setCountries] = useState([])
+    const [filteredCountries, setFilteredCountries] = useState([])
+    const [country, setCountry] = useState({})
+    const [userGuess, setUserGuess] = useState("")
+    const [isCorrect, setIsCorrect] = useState(null)
+    const [formSubmitted, setFormSubmitted] = useState(false)
+
+    const updateUser = (result) => {
+        const updatedUser = {...user}
+        const newStats = {...updatedUser.capitals}
+
+        {result ? newStats.currentStreak += 1 : newStats.currentStreak = 0}
+        if (result && newStats.currentStreak > newStats.highStreak) {
+            newStats.highStreak = newStats.currentStreak
+        }
+
+        updatedUser.capitals = newStats
+        return updatedUser
+    }
+
+    const getData = () => {
+        getAllCountries()
+            .then(allCountries => {
+                setCountries(allCountries)
+                setFilteredCountries(allCountries)
+                const selectedCountry = randomCountries(allCountries, 1)
+                setCountry(selectedCountry[0])
+        })
+    }
 
     useEffect(() => {
-        getAllCountries().then(data => {
-            setCountries(data);
-            setFilteredCountries(data);
-            const randomIndex = Math.floor(Math.random() * data.length);
-            const selectedCountry = data[randomIndex];
-            setCountry(selectedCountry);
-        });
-    }, []);
+        getData()
+    }, [])
 
     useEffect(() => {
         if (userGuess.length >= 2) {
-            setFilteredCountries(
-                countries.filter(
-                    country =>
-                        country.name.toLowerCase().indexOf(userGuess.toLowerCase()) !==
-                        -1
-                )
-            );
-        } else {
-            setFilteredCountries([]);
+            setFilteredCountries(countries.filter(country => {
+                return country.name.toLowerCase().indexOf(userGuess.toLowerCase()) !== -1}))
         }
-    }, [userGuess]);
+    }, [userGuess])
 
-    const handleGuess = evt => {
-        setUserGuess(evt.target.value);
-    };
+    const handleGuess = (evt) => {setUserGuess(evt.target.value)}
 
-    const handleCountryClick = countryName => {
-        setUserGuess(countryName);
-    };
+    const handleCountryClick = (countryName) => {setUserGuess(countryName)}
 
-    const handleSubmit = event => {
-        event.preventDefault();
-        setIsCorrect(userGuess === country.name);
-        setFormSubmitted(true);
-    };
+    const handleSubmit = (evt) => {
+        evt.preventDefault()
+        const result = (userGuess.toLowerCase() === country.name.toLowerCase())
+        setIsCorrect(result)
+        setFormSubmitted(true)
+        updateScores(updateUser(result))
+    }
 
     const processRefresh = () => {
-        getAllCountries().then(data => {
-            setCountries(data);
-            setFilteredCountries(data);
-            const randomIndex = Math.floor(Math.random() * data.length);
-            const selectedCountry = data[randomIndex];
-            setCountry(selectedCountry);
-            setUserGuess("");
-            setFormSubmitted(false)
-        });
+        getData()
+        setUserGuess("")
+        setFormSubmitted(false)
     }
 
-    const handleRefreshClick = () => {
-        processRefresh()
-    }
+    {formSubmitted && updateAUser(user._id, user)}
 
     return (
         <Container>
-            <Header>Capitals Quiz</Header>
-            <CapitalPhoto className='Capitals' src={Capitals} alt='Capitals' />
+            <Header>A Question of Capitals</Header>
+            <ScoreContainer>
+                {user.capitals && <CurrentScore>Current Run: {user.capitals.currentStreak}</CurrentScore>}
+                {user.capitals && <CurrentScore>Best Run: {user.capitals.highStreak}</CurrentScore>}
+            </ScoreContainer>
             <ContentContainer>
-                <form onSubmit={handleSubmit}>
-                    <h4>
-                        <p>{country.capital} is the capital of which country?</p>
-                        <Input type="text" value={userGuess} onChange={handleGuess} />
-                        <button type="submit">Submit</button>
-                        {formSubmitted && !isCorrect && (
-                            <p>Incorrect. The correct answer is: {country.name}</p>
-                        )}
-                        {formSubmitted && isCorrect && <p>Correct!</p>}
-                    </h4>
-                    <div style={{ display: userGuess.length > 0 ? "block" : "none" }}>
-                        {filteredCountries.map(country => (
-                            <p onClick={() => handleCountryClick(country.name)}>
-                                {country.name}
-                            </p>
-                        ))}
-                    </div>
-                </form>
-                <button onClick={handleRefreshClick} >Next Capital</button>
+                <CapitalPhoto className='Capitals' src={Capitals} alt='Capitals' />
+                {formSubmitted
+                    ? <QAContainer>
+                        <Answer> {isCorrect
+                            ? "You got it! " + country.capital + " is the capital of " + country.name + "!"
+                            : "Wrong! " + country.capital + " is the capital of " + country.name + "!"}
+                        </Answer>
+                        <Button onClick={processRefresh}>Next Capital</Button>
+                    </QAContainer>
+                    : <QAContainer>
+                        <Text>{country.capital} is the capital of which country?</Text>
+                        <Form onSubmit={handleSubmit}>
+                            <Input type="text" value={userGuess} onChange={handleGuess} />
+                            <SubmitButton type="submit" value="Submit guess!" />
+                            <AnswerList style={{display: userGuess.length > 0 ? "block" : "none"}}>
+                                {filteredCountries.map(country => {
+                                    return <AnswerItem onClick={() => handleCountryClick(country.name)} key={country._id}>{country.name}</AnswerItem>
+                                })}
+                            </AnswerList>
+                        </Form>
+                    </QAContainer>
+                }
             </ContentContainer>
         </Container>
-    );
-};
+    )
+}
 
-export default CountriesQuiz;
+export default CapitalsQuiz;
+
