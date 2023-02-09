@@ -2,7 +2,7 @@ import QuizItem from "./QuizItem"
 import styled from "styled-components"
 import Languages from '../containers/images/Languages.jpeg'
 
-const Flag = styled.img`
+const Picture = styled.img`
     height: 14em;
     width: auto; 
     position: relative;
@@ -12,13 +12,11 @@ const Flag = styled.img`
     border: solid lightgrey;
 `
 const Language = styled.h3`
-    width: 30em;
+    width: 24em;
     position: relative;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 1em auto 1em auto;
     border: solid lightgrey;
-    margin-bottom: 30px; 
     text-align: center;
 `
 const Answer = styled.p`
@@ -69,10 +67,20 @@ const QuizList = ({answerOptions , processGuess, hasUserAnswered, userCorrect, p
 
     const countryToShowObject = answerOptions.find(option => option.isCorrect)
 
-    const flagQuestion = (countryToShowObject &&<Flag src={countryToShowObject.flag}></Flag>)
-    const languageQuestion = (countryToShowObject &&<Language>{Object.values(countryToShowObject.language)[0]}</Language>)
-    // const languageQuestion = (countryToShowObject && <img src={Languages}/> && <Language>{Object.values(countryToShowObject.language)[0]}</Language>)
-    const questionInfo = gameType=="Flag" ? flagQuestion : languageQuestion // shows question info dependes on the gameType
+    const setQuestion = () => {
+        if (gameType === "Flag") {
+            return <Picture src={countryToShowObject.flag} />
+        } else if (gameType === "Language") {
+            return (
+                <div>
+                    <Picture src={Languages}/> 
+                    <Language>{Object.values(countryToShowObject.language)[0]}</Language>
+                </div>
+            )
+        }
+    }
+
+    const questionInfo = setQuestion()
 
     const handleRefreshClick = () => {
         processRefresh()
@@ -91,8 +99,8 @@ const QuizList = ({answerOptions , processGuess, hasUserAnswered, userCorrect, p
             {questionInfo} 
             {hasUserAnswered 
                 ?  <div><Answer>{userCorrect 
-                        ? "You got it! This "+gameType+" belongs to " + countryToShowObject.name + "!"
-                        : "Wrong! This "+gameType+" belongs to " + countryToShowObject.name + "!"} </Answer>
+                        ? "You got it! This " + gameType + " belongs to " + countryToShowObject.name + "!"
+                        : "Wrong! This " + gameType + " belongs to " + countryToShowObject.name + "!"} </Answer>
                     <Button onClick={handleRefreshClick} >Next {gameType}</Button></div>
                 : <ul>{listOfAnswerItems}</ul> }
         </div>
