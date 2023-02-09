@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Logo from './images/Logo.png'
+import GeograPHUN from './images/GeograPHUN.png'
 import { useState } from "react";
 import './NavBar/Navbar.css'
+
 
 
 const NavBarStyle = styled.ul`
@@ -11,7 +13,7 @@ const NavBarStyle = styled.ul`
     padding: 1em;
     margin: 0;
     background-color: #3c7f61;
-    height: 6em;
+    height: 6.3em;
     font-weight: bold;
     text-decoration: none;
     color: #3c7f61;
@@ -62,6 +64,7 @@ const NavBar = () => {
     return (
         <>
         <NavLink to="/"><img className='Logo' src={Logo} alt='Logo'/></NavLink> 
+        <img className='GeograPHUN' src={GeograPHUN} alt='name'/>
         <NavBarStyle>
         <header>
             <NavBarLayout>
@@ -71,7 +74,7 @@ const NavBar = () => {
                 {showQuizzes && (
                 <QuizzesDropDown>
                     <NavLink to="/FlagQuiz">Whose Flag Is It Anyway?</NavLink>
-                    <NavLink to="/LanguageQuiz">Language Quiz</NavLink>
+                    <NavLink to="/LanguageQuiz">Language Challenge</NavLink>
                     <NavLink to="/CountriesQuiz">A Question of Capitals</NavLink>
                     <NavLink to="/PopulationQuiz">Play Your Population Right</NavLink>
                     {/* <NavLink to="/LocationQuiz">Location Quiz</NavLink> */}

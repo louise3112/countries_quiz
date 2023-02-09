@@ -1,4 +1,9 @@
 import CountryItem from "./CountryItem"
+import styled from "styled-components"
+
+const CountriesHeader = styled.h4`
+    margin-left: 5em; 
+`
 
 const CountriesList = ({allCountries}) => {
 
@@ -8,9 +13,10 @@ const CountriesList = ({allCountries}) => {
 
     return (
         <>
-        <h4>Countries:</h4>
+        <CountriesHeader>Countries:</CountriesHeader>
                 <ul> 
                     {countryItems}
+                    <br></br>
                 </ul>
         </>
     )

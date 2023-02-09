@@ -3,11 +3,14 @@ import styled from "styled-components"
 
 const Header = styled.h4`
     font-size: 2em;
-    margin-left: 3.8em;
+    margin-left: 3.7em;
     margin-bottom: 0;
 `
 const UnorderedList = styled.ul`
-    margin:0; 
+    margin:0;
+`
+const Subheader = styled.h2`
+    margin-left: 3.4em;
 `
 
 const ContinentsList = ({allContinents, allCountries}) => {
@@ -15,7 +18,7 @@ const ContinentsList = ({allContinents, allCountries}) => {
         const countriesForContinent = allCountries.filter(country => country.continents.includes(continent))
         if (countriesForContinent.length > 0) {
             return (<>
-                <h2>{continent}</h2>
+                <Subheader>{continent}</Subheader>
                 <CountriesList allCountries= {countriesForContinent}/>
                 </>)
         }
@@ -25,9 +28,9 @@ const ContinentsList = ({allContinents, allCountries}) => {
     return (
         <>
         <Header>Countries in this Continent</Header>
-            <ul>
+            <UnorderedList>
                 {countriesByContinent}
-            </ul>
+            </UnorderedList>
         </>
     )
 }
