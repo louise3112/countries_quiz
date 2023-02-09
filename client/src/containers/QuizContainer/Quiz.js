@@ -56,6 +56,10 @@ const SubmitButton = styled.input`
     font-size: 1em;
     width: 8em;
     height: 1.75em;
+    cursor: pointer; 
+    background-color: #F3DC65;
+    border-radius: 6px;
+    font-family: 'Oswald', sans-serif;
 `
 const AnswerList = styled.ul`
     grid-area: answerList;
