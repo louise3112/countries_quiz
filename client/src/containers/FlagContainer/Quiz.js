@@ -35,18 +35,10 @@ const Quiz = ({gameType, user, updateScores}) => {
         const updatedUser = {...user}
         const newStats = {...updatedUser[gameType]}
 
-        console.log(newStats)
-        console.log("current streak before update: " + newStats.currentStreak)
-
         {result ? newStats.currentStreak += 1 : newStats.currentStreak = 0}
-        console.log("current streak after update: " + newStats.currentStreak)
-        console.log("high streak before update: " + newStats.highStreak)
         if (result && newStats.currentStreak > newStats.highStreak) {
             newStats.highStreak = newStats.currentStreak
         }
-
-        console.log("current streak after update: " + newStats.currentStreak)
-        console.log("high streak after update: " + newStats.highStreak)
 
         updatedUser[gameType] = newStats
         return updatedUser
@@ -105,7 +97,6 @@ const Quiz = ({gameType, user, updateScores}) => {
             })
     }, [])
 
-    // {hasUserAnswered && updateAUser(user._id, updateUser(userCorrect))}
     {hasUserAnswered && updateAUser(user._id, user)}
 
     return (
