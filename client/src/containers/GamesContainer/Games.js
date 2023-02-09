@@ -76,7 +76,7 @@ const Games = () => {
                 <NavLink to="/LanguageQuiz">
                     <Box>
                         <Images className='Languages' src={Languages} alt='Languages' />
-                        <GamesItems>Language Quiz</GamesItems>
+                        <GamesItems>Language Challenge</GamesItems>
                     </Box>
                 </NavLink>
             </GamesGrid>
