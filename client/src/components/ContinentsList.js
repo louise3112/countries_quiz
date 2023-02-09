@@ -1,16 +1,12 @@
 import CountriesList from "./CountriesList"
 import styled from "styled-components"
 
-const Header = styled.h4`
-    font-size: 2em;
-    margin-left: 3.7em;
-    margin-bottom: 0;
-`
-const UnorderedList = styled.ul`
-    margin:0;
-`
-const Subheader = styled.h2`
-    margin-left: 3.4em;
+const ListByContinent = styled.ul`
+    margin: 0em 0em 1em 0em;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    column-gap: 3em;
 `
 
 const ContinentsList = ({allContinents, allCountries}) => {
@@ -18,20 +14,16 @@ const ContinentsList = ({allContinents, allCountries}) => {
         const countriesForContinent = allCountries.filter(country => country.continents.includes(continent))
         if (countriesForContinent.length > 0) {
             return (<>
-                <Subheader>{continent}</Subheader>
-                <CountriesList allCountries= {countriesForContinent}/>
+                <CountriesList continent={continent} allCountries= {countriesForContinent}/>
                 </>)
         }
     })
     
 
     return (
-        <>
-        <Header>Countries in this Continent</Header>
-            <UnorderedList>
-                {countriesByContinent}
-            </UnorderedList>
-        </>
+        <ListByContinent>
+            {countriesByContinent}
+        </ListByContinent>
     )
 }
 

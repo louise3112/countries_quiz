@@ -14,14 +14,11 @@ import Footer from './components/Footer'
 import styled from 'styled-components';
 
 const Container = styled.div`
-display: flex;
-flex-direction: column;
-min-height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height:100vh;
 `
-const Contents = styled.div`
-    flex: 1;
-`
-
 
 function App() {
 
@@ -40,8 +37,7 @@ function App() {
     }, [])
 
     return (
-            <Container>
-            <Contents>
+        <Container>
             <Router>
                 <header>
                     <NavBar />
@@ -61,8 +57,7 @@ function App() {
                 </div>
             </Router>
             <Footer />
-            </Contents>
-            </Container>
+        </Container>
     )
 }
 

@@ -9,7 +9,7 @@ const StyledDiv = styled.div`
     align-items: center;
     justify-content: center;
     align-content: center; 
-`;
+`
 
 const Container = styled.div`
     display: flex; 
@@ -19,11 +19,11 @@ const Container = styled.div`
     justify-content: center;
     border: solid lightgrey; 
     border-radius: 20px; 
-    height: 31em;
-    width: 35em;  
+    height: 28em;
+    width: 30em;  
     padding: 1em; 
-    background-color: #96bcb4; 
-`;
+    background-color: #96bcb4;
+`
 
 const Flag = styled.img`
     margin-left: auto;

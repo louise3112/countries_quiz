@@ -23,6 +23,7 @@ h4 {
     font-family: 'Roboto', sans-serif; 
 }
 
-.main-content {
-    min-height: calc(100vh - 70px); /* subtract height of footer from viewport height */
-}
+/* .main-content {
+    min-height: calc(100vh - 70px); subtract height of footer from viewport height
+} */
+

@@ -1,24 +1,28 @@
 import CountryItem from "./CountryItem"
 import styled from "styled-components"
 
-const CountriesHeader = styled.h4`
-    margin-left: 5em; 
+const ContinentHeader = styled.h2`
+    margin: 0;
+`
+const ListPerContinent = styled.ul`
+    padding: 0;
 `
 
-const CountriesList = ({allCountries}) => {
+const CountriesList = ({continent, allCountries}) => {
 
-        const countryItems = allCountries.map((country) => {
+        const sortedCountries = allCountries.sort((x, y) => (x.name > y.name) ? 1 : -1)
+
+        const countryItems = sortedCountries.map((country) => {
             return <CountryItem country={country} key={country._id}/> 
         })
 
     return (
-        <>
-        <CountriesHeader>Countries:</CountriesHeader>
-                <ul> 
-                    {countryItems}
-                    <br></br>
-                </ul>
-        </>
+        <div>
+            <ContinentHeader>{continent}</ContinentHeader>
+            <ListPerContinent> 
+                {countryItems}
+            </ListPerContinent>
+        </div>
     )
 
 }

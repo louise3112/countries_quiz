@@ -1,20 +1,27 @@
-import { useState } from "react"
 import styled from "styled-components"
 
-const Label = styled.label`
-    margin-left: 7.5em;
+const SearchForm = styled.form`
+    display: flex;
+    column-gap: 0.8em;
+    align-items: center;
 `
-const SearchFieldContainer = styled.div`
-    margin-top: 2em;
+const SearchLabel = styled.label`
+    font-size: 1.2em;
+    font-weight: bold;
+`
+const SearchInput = styled.input`
+    width: 40em;
+    height: 1.5em;
+    font-size: 1.2em;
 `
 
 const SearchCountryForm = ({searchText, handleChange}) => {
 
     return (
-        <SearchFieldContainer>
-            <Label>Search:</Label>
-            <input label="Search" value={searchText} onChange={handleChange} style={{ width: "600px", marginLeft: "10px"}}/>
-        </SearchFieldContainer>
+        <SearchForm>
+            <SearchLabel>Search countries:</SearchLabel>
+            <SearchInput label="Search" value={searchText} onChange={handleChange}/>
+        </SearchForm>
     )
 }
 
