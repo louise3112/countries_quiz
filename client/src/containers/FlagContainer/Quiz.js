@@ -15,7 +15,7 @@ const Container = styled.div`
 const Header = styled.h1`
     position: relative;
     text-align: center;
-    font-family: 'Oswald', sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 2.5em;
     margin-top: 10px; 
     margin-bottom:6px;
@@ -23,7 +23,7 @@ const Header = styled.h1`
 
 const Text = styled.h3`
     text-align: center;
-    margin-bottom: 14px; 
+    margin-bottom: 18px; 
 `
 
 const Quiz = ({gameType, user, updateScores}) => {
