@@ -15,10 +15,10 @@ Include this and appropriate screenshots??
 
 
 ## Contributors
-Louise Cuthbertson ([Github](https://github.com/louise3112); [LinkedIn](https://linkedin.com/in/louise3112/))
-Gareth Evans (Github: github.com/G3vans16)
-Jonathan Strandberg (Github: github.com/jonstrandberg; LinkedIn: linkedin.com/in/jonathan-strandberg-6163902b/)
-Maggie Amin (Github: github.com/maggieAmin; LinkedIn: linkedin.com/in/maggie-amin/)
+Louise Cuthbertson ([Github](https://github.com/louise3112); [LinkedIn](https://linkedin.com/in/louise3112/))   
+Gareth Evans ([Github](https://github.com/G3vans16))   
+Jonathan Strandberg ([Github](https://github.com/jonstrandberg); [LinkedIn](https://linkedin.com/in/jonathan-strandberg-6163902b/))   
+Maggie Amin ([Github](https://github.com/maggieAmin); [LinkedIn](https://linkedin.com/in/maggie-amin/))
 
 
 ## Getting Started
