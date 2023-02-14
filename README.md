@@ -1,17 +1,23 @@
 # Countries Quiz
 
-Group project from Week 10 of CodeClan using JavaScript / React, Express, MongoDB and styled components.
+Group project from Week 10 of the CodeClan Professional Software Development course. This is a full-stack app that uses a JavaScript / React front-end designed using styled components; an Express server; and a MongoDB back-end.
 
 
 ## Brief
 Design a full-stack app using the Countries API data where users can:
 - play multiple, interactive quiz games;
+
+![Screenshot of the 'Whose Flag is it Anyway?' quiz](readmeImages/flagQuiz.png?raw=true "Title")
+
 - see their quiz scores and have them retained, even if they leave the app;
 - view underlying information for each country so they can improve their quiz scores.
 
 
 ## Feature List
 Include this and appropriate screenshots??
+
+
+
 
 
 ## Contributors
@@ -22,10 +28,10 @@ Maggie Amin ([Github](https://github.com/maggieAmin); [LinkedIn](https://linkedi
 
 
 ## Getting Started
-
-These instructions should get you a copy of the project up and running on your local machine for development purposes.
+These instructions should get you a copy of the project up and running on your local machine for development purposes:
 
 ### Server
+Ensure that you have mongoDB installed on your machine.
 
 Install server dependencies:
 ```
