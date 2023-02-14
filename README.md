@@ -15,7 +15,7 @@ Include this and appropriate screenshots??
 
 
 ## Contributors
-Louise Cuthbertson (Github: github.com/louise3112; LinkedIn: linkedin.com/in/louise3112/)
+Louise Cuthbertson ([Github](https://github.com/louise3112); [LinkedIn](https://linkedin.com/in/louise3112/))
 Gareth Evans (Github: github.com/G3vans16)
 Jonathan Strandberg (Github: github.com/jonstrandberg; LinkedIn: linkedin.com/in/jonathan-strandberg-6163902b/)
 Maggie Amin (Github: github.com/maggieAmin; LinkedIn: linkedin.com/in/maggie-amin/)
