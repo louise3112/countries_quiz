@@ -13,13 +13,6 @@ Design a full-stack app using the Countries API data where users can:
 ![Screenshot of the countries pages](readmeImages/countries.png?raw=true "Title")
 
 
-## Contributors
-Louise Cuthbertson ([Github](https://github.com/louise3112); [LinkedIn](https://linkedin.com/in/louise3112/))   
-Gareth Evans ([Github](https://github.com/G3vans16))   
-Jonathan Strandberg ([Github](https://github.com/jonstrandberg); [LinkedIn](https://linkedin.com/in/jonathan-strandberg-6163902b/))   
-Maggie Amin ([Github](https://github.com/maggieAmin); [LinkedIn](https://linkedin.com/in/maggie-amin/))
-
-
 ## Getting Started
 These instructions should get you a copy of the project up and running on your local machine for development purposes:
 
@@ -54,3 +47,10 @@ Run the client:
 ```
 npm start
 ```
+
+
+## Contributors
+Louise Cuthbertson ([Github](https://github.com/louise3112); [LinkedIn](https://linkedin.com/in/louise3112/))   
+Gareth Evans ([Github](https://github.com/G3vans16))   
+Jonathan Strandberg ([Github](https://github.com/jonstrandberg); [LinkedIn](https://linkedin.com/in/jonathan-strandberg-6163902b/))   
+Maggie Amin ([Github](https://github.com/maggieAmin); [LinkedIn](https://linkedin.com/in/maggie-amin/))
