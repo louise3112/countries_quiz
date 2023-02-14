@@ -8,14 +8,12 @@ Design a full-stack app using the Countries API data where users can:
 - play multiple, interactive quiz games;
 - see their quiz scores and have them retained, even if they leave the app;
 
-![Screenshot of the 'Whose Flag is it Anyway?' quiz](readmeImages/whoseFlag.png?raw=true "Title")
-![Screenshot of the 'A Question of Capitals' quiz](readmeImages/questionOfCapitals.png?raw=true "Title")
-![Screenshot of the 'Play Your Population Right' quiz](readmeImages/playYourPop.png?raw=true "Title")
+![Screenshot of the three quiz pages](readmeImages/quizzes.png?raw=true "Title")
+
 
 - view underlying information for each country so they can improve their quiz scores.
 
-![Screenshot of the list of Countries page](readmeImages/countryList.png?raw=true "Title")
-![Screenshot of the country details page for Croatia](readmeImages/countryDetail.png?raw=true "Title")
+![Screenshot of the countries pages](readmeImages/countries.png?raw=true "Title")
 
 
 ## Contributors
