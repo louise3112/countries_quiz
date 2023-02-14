@@ -7,17 +7,10 @@ Group project from Week 10 of the CodeClan Professional Software Development cou
 Design a full-stack app using the Countries API data where users can:
 - play multiple, interactive quiz games;
 
-![Screenshot of the 'Whose Flag is it Anyway?' quiz](readmeImages/flagQuiz.png?raw=true "Title")
+![Screenshot of the 'Whose Flag is it Anyway?' quiz](readmeImages/whoseFlag.png?raw=true "Title")
 
 - see their quiz scores and have them retained, even if they leave the app;
 - view underlying information for each country so they can improve their quiz scores.
-
-
-## Feature List
-Include this and appropriate screenshots??
-
-
-
 
 
 ## Contributors
