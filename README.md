@@ -1,4 +1,4 @@
-# Countries Quiz
+# geograPHUN
 
 Group project from Week 10 of the CodeClan Professional Software Development course. This is a full-stack app that uses a JavaScript / React front-end designed using styled components; an Express server; and a MongoDB back-end.
 
