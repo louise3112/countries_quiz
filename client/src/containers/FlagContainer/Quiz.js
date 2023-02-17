@@ -24,7 +24,7 @@ const Text = styled.h3`
     margin-bottom: 18px; 
 `
 
-const Quiz = ({gameType, user, updateScores}) => {
+const Quiz = ({gameType, user, updateScores, title}) => {
     const [answerOptions, setAnswerOptions] = useState([])
     const [userCorrect, setUserCorrect] = useState(false)
     const [hasUserAnswered, sethasUserAnswered] = useState(false)
@@ -46,7 +46,7 @@ const Quiz = ({gameType, user, updateScores}) => {
     const prepAnswers = (countriesArray) => {
         const randomCountriesArray = randomCountries(countriesArray, 3) // Selects 3 random country objects and puts them in an array
         let indexOfLanguage = -1 // undefined  // Because any number 0 or more could be an array index
-        if(gameType == "Language") {
+        if(gameType === "Language") {
             const languageInSingleCountry = getLanguageForQuestion(randomCountriesArray) // ["English", [{countryObj.name}]]
             if(!languageInSingleCountry) {
                 // All options have repeated langauges
@@ -54,14 +54,14 @@ const Quiz = ({gameType, user, updateScores}) => {
             }
             
             for(let i=0; i< randomCountriesArray.length; i++) {
-                if(languageInSingleCountry[1][0].name == randomCountriesArray[i].name) { 
+                if(languageInSingleCountry[1][0].name === randomCountriesArray[i].name) { 
                     indexOfLanguage = i
                     break;
                 }
             }
         }
         
-        const correctAnswerIndex = (gameType=="Flag")?randomIndex(randomCountriesArray.length):indexOfLanguage
+        const correctAnswerIndex = (gameType==="Flag")?randomIndex(randomCountriesArray.length):indexOfLanguage
         const answersList = randomCountriesArray.map((country, index) => {
             return {
                 ...country,
@@ -70,16 +70,6 @@ const Quiz = ({gameType, user, updateScores}) => {
         })
 
         return answersList
-    }
-
-    const getTitle = () => {
-        let title = ""
-        if (gameType === "Language") {
-            title = "Language Challenge"
-        } else if (gameType === "Flag") {
-            title = "Whose Flag Is It Anyway?"
-        } 
-        return title
     }
 
     const processGuess = (result) => {
@@ -110,7 +100,7 @@ const Quiz = ({gameType, user, updateScores}) => {
 
     return (
         <Container>
-            {getTitle() !== "" && <Header>{getTitle()}</Header>}
+            {title && <Header>{title}</Header>}
             <Text>Guess what country's {gameType.toLowerCase()} this is. Choose from one of the three options below.</Text>
             <QuizList 
                 answerOptions={answerOptions} 

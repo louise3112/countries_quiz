@@ -42,21 +42,19 @@ function App() {
                 <header>
                     <NavBar />
                 </header>
-                <div className="main-content">
                 <Routes>
                     <Route path="/" element={<Games />} />
                     <Route path="/CountriesFacts" element={<Continents />} />
                     <Route path="/CountriesFacts/:id" element={<Country />} />
-                    <Route path="/FlagQuiz" element={<Quiz gameType="Flag" user={user} updateScores={updateScores}/>} />
-                    <Route path="/LanguageQuiz" element={<Quiz gameType="Language" user={user} updateScores={updateScores}/>} />
+                    <Route path="/FlagQuiz" element={<Quiz gameType="Flag" user={user} updateScores={updateScores} title="Whose Flag Is It Anyway?"/>} />
+                    <Route path="/LanguageQuiz" element={<Quiz gameType="Language" user={user} updateScores={updateScores} title="Language Challenge"/>} />
                     <Route path="/CapitalsQuiz" element={<CapitalsQuiz user={user} updateScores={updateScores}/>} />
                     <Route path="/PopulationQuiz" element={<PopulationQuiz user={user} updateScores={updateScores}/>} />
                     <Route path="/LocationQuiz" element={<LocationQuiz />} />                    
 
                 </Routes>
-                </div>
+                <Footer />
             </Router>
-            <Footer />
         </Container>
     )
 }
