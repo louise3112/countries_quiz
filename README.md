@@ -51,6 +51,6 @@ npm start
 
 ## Contributors
 Louise Cuthbertson ([Github](https://github.com/louise3112); [LinkedIn](https://linkedin.com/in/louise3112/))   
-Gareth Evans ([Github](https://github.com/G3vans16))   
+Gareth Evans ([Github](https://github.com/G3vans16); [LinkedIn](https://www.linkedin.com/in/gareth-evans-247589266/))   
 Jonathan Strandberg ([Github](https://github.com/jonstrandberg); [LinkedIn](https://linkedin.com/in/jonathan-strandberg-6163902b/))   
 Maggie Amin ([Github](https://github.com/maggieAmin); [LinkedIn](https://linkedin.com/in/maggie-amin/))
